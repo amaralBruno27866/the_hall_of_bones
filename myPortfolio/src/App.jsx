@@ -1,5 +1,10 @@
+import React from 'react';
+
 export function App() {
   return (
-    <h1>Main Page</h1>
-  )
+    <div className="container">
+      <h1 className="mt-5">Main Page</h1>
+      <button className="btn btn-primary">Bootstrap Button</button>
+    </div>
+  );
 }
