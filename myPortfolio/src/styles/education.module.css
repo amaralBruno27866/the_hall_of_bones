@@ -1,0 +1,13 @@
+.education {
+  margin-top: 2rem;
+}
+
+.education header {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.education header h1 {
+  font-size: 2rem;
+  color: var(--text);
+}
