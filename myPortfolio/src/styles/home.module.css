@@ -16,8 +16,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.8;
   z-index: -1;
+  transform: scaleX(-1);
 }
 
 .content {
@@ -28,27 +29,32 @@
 
 .content h4 {
   margin-bottom: 1rem;
-  color: var(--text-highlight);
+  color: var(--highlight-100);
   font-size: 1rem;
   font-weight: 600;
+  animation: glow-100 1.5s infinite alternate;
 }
 
 .content h1 {
-  color: var(--text-highlight);
+  color: var(--highlight-200);
   margin-bottom: 1rem;
   font-size: 3rem;
   font-weight: 700;
   line-height: 4rem;
+  animation: glow-200 1.5s infinite alternate;
 }
 
 .content h1 span {
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px var(--text-highlight);
+  -webkit-text-stroke: 1px var(--highlight-300);
+  
 }
 
 .content p {
   margin-bottom: 2rem;
-  color: var(--text-highlight);
+  color: var(--highlight-100);
+  position: relative;
+  animation: glow-100 1.5s infinite alternate;
 }
 
 .image {
@@ -63,5 +69,31 @@
 .image img {
   width: 28.125rem;
   margin: auto;
-  border-radius: 1rem;
 }
+
+@keyframes glow-100 {
+  from {
+    text-shadow: 0 0 5px var(--highlight-100), 0 0 10px var(--highlight-100), 0 0 15px var(--highlight-100), 0 0 20px var(--highlight-100);
+  }
+  to {
+    text-shadow: 0 0 10px var(--highlight-100), 0 0 20px var(--highlight-100), 0 0 30px var(--highlight-100), 0 0 40px var(--highlight-100);
+  }
+}
+
+/* @keyframes glow-200 {
+  from {
+    text-shadow: 0 0 5px var(--highlight-200), 0 0 10px var(--highlight-200), 0 0 15px var(--highlight-200), 0 0 20px var(--highlight-200);
+  }
+  to {
+    text-shadow: 0 0 10px var(--highlight-200), 0 0 20px var(--highlight-200), 0 0 30px var(--highlight-200), 0 0 40px var(--highlight-200);
+  }
+}
+
+@keyframes glow-300 {
+  from {
+    text-shadow: 0 0 5px var(--highlight-300), 0 0 10px var(--highlight-300), 0 0 15px var(--highlight-300), 0 0 20px var(--highlight-300);
+  }
+  to {
+    text-shadow: 0 0 10px var(--highlight-300), 0 0 20px var(--highlight-300), 0 0 30px var(--highlight-300), 0 0 40px var(--highlight-300);
+  }
+} */
