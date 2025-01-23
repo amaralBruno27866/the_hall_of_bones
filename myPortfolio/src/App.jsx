@@ -3,6 +3,7 @@ import { Navbar } from './frontend/components/navbar';
 import { Home } from './frontend/components/home';
 import { About } from './frontend/components/about';
 import { Education } from './frontend/components/education';
+import { WorkExperience } from './frontend/components/workExperience';
 
 export function App() {
   return (
@@ -11,6 +12,7 @@ export function App() {
       <Home />
       <About />
       <Education />
+      <WorkExperience />
     </div>
   );
 }

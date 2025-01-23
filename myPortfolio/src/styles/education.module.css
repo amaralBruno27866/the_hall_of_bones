@@ -1,6 +1,5 @@
 .education {
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .info {
@@ -18,4 +17,8 @@
   width: 100%;
   height: 33%; /* Define a altura do gradiente */
   background: linear-gradient(to top, black, transparent); /* Gradiente de branco para transparente */
+}
+
+.content {
+  margin-bottom: 2rem;
 }
