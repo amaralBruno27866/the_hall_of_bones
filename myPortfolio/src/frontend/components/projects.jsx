@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/projects.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import load from '../../assets/images/loading.gif';
+import project from '../../assets/images/project.jpg';
 
 export function Projects() {
   return (
@@ -11,7 +11,7 @@ export function Projects() {
       </header>
       <div className={styles.container}>
         <div className={styles.slide}>
-          <img src={load} alt="" />
+          <img src={project} alt="" />
           <div className={styles.info}>
             <h5>Project Title</h5>
             <p>Project description</p>

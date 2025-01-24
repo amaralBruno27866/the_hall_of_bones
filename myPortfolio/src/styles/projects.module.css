@@ -2,3 +2,9 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.container img {
+  width: 79.3125rem;
+  height: 45.5625rem;
+  border-radius: 2rem;
+}
