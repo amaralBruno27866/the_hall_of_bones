@@ -6,6 +6,7 @@ import { Education } from './frontend/components/education';
 import { WorkExperience } from './frontend/components/workExperience';
 import { Projects } from './frontend/components/projects';
 import { ContactForm } from './frontend/components/contactform';
+import { Footer } from './frontend/components/footer';
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
       <WorkExperience />
       <Projects />
       <ContactForm />
+      <Footer />
     </div>
   );
 }
