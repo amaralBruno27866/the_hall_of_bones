@@ -8,19 +8,20 @@ import { Projects } from './frontend/components/projects';
 import { ContactForm } from './frontend/components/contactform';
 import { Footer } from './frontend/components/footer';
 import { BsDoorClosedFill } from "react-icons/bs";
+import styles from './app.module.css';
 
 export function App() {
   return (
     <div className="container">
-      <Navbar />
-      <Home />
-      <About />
-      <Education />
-      <WorkExperience />
-      <Projects />
-      <ContactForm />
-      <Footer />
-      <div class="copyright">
+      <Navbar className={styles.navbar}/>
+      <Home className={styles.home}/>
+      <About className={styles.about}/>
+      <Education className={styles.education}/>
+      <WorkExperience className={styles.work}/>
+      <Projects className={styles.projects}/>
+      <ContactForm className={styles.contat}/>
+      <Footer className={styles.footer}/>
+      <div className={styles.copyright}>
         Copyright &copy; 2025 Bruno Alencar Amaral. All Rights Reserved.
         <a href="#"> <BsDoorClosedFill size={30}/> </a>
       </div>

@@ -1,61 +1,49 @@
 import React from 'react';
 import styles from '../../styles/footer.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { BsFacebook, BsInstagram, BsLinkedin, BsGithub, BsDoorClosedFill } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 import logo from '../../assets/images/my_logo.png';
 
 export function Footer() {
-  return(
+  return (
     <section>
-      <header>
-        <h1>Footer</h1>
-      </header>
-      <footer class="container">
-
-        <span class="blur"></span>
-        <span class="blur"></span>
-
-        <div class="column">
-
-            <div class="logo">
-                <img src={logo} alt="Logo" width="50" height="50" className="d-inline-block align-top me-2"/>
+      <footer className={`container ${styles.footer}`}>
+        <div className="row">
+          <div className={`col-12 col-md-3 ${styles.column}`}>
+            <div className={styles.logo}>
+              <img src={logo} alt="Logo" width="60" height="60" className="d-inline-block align-top me-2" />
             </div>
-            
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </p>
-
-            <div class="socials">
-                <a href="#"> <BsFacebook size={30}/> </a>
-                <a href="#"> <BsInstagram size={30}/> </a>
-                <a href="#"> <BsLinkedin size={30}/> </a>
-                <a href="#"> <BsGithub size={30}/> </a>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <div className={styles.socials}>
+              <a href="#"> <BsFacebook size={20} /> </a>
+              <a href="#"> <BsInstagram size={20} /> </a>
+              <a href="#"> <BsLinkedin size={20} /> </a>
+              <a href="#"> <BsGithub size={20} /> </a>
             </div>
+          </div>
 
-        </div>
-
-        <div class="column">
+          <div className={`col-12 col-md-3 ${styles.column}`}>
             <h4>Company</h4>
             <a href="#">Business</a>
-            <a href="#">Patnership</a>
+            <a href="#">Partnership</a>
             <a href="#">Network</a>
-        </div>
+          </div>
 
-        <div class="column">
+          <div className={`col-12 col-md-3 ${styles.column}`}>
             <h4>About Us</h4>
             <a href="#">Blogs</a>
             <a href="#">Channels</a>
             <a href="#">Sponsors</a>
-        </div>
+          </div>
 
-        <div class="column">
+          <div className={`col-12 col-md-3 ${styles.column}`}>
             <h4>Contact</h4>
             <a href="#">Contact Us</a>
-            <a href="#">Privicy Policy</a>
+            <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
+          </div>
         </div>
-
       </footer>
     </section>
-  )
+  );
 }
