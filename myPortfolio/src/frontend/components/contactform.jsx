@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/contactform.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import image from '../../assets/images/programmer.png';
+import form from '../../assets/images/form.gif';
 
 export function ContactForm() {
   return (
@@ -34,7 +34,7 @@ export function ContactForm() {
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>      
-        <img src={image} alt="" />
+        <img src={form} alt="" className={styles.img}/>
       </div>
       <hr />
     </section>
