@@ -4,6 +4,7 @@ import { Home } from './frontend/components/home';
 import { About } from './frontend/components/about';
 import { Education } from './frontend/components/education';
 import { WorkExperience } from './frontend/components/workExperience';
+import { Projects } from './frontend/components/projects';
 
 export function App() {
   return (
@@ -13,6 +14,7 @@ export function App() {
       <About />
       <Education />
       <WorkExperience />
+      <Projects />
     </div>
   );
 }
