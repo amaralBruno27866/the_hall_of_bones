@@ -1,7 +1,6 @@
 .home {
   position: relative;
   padding-top: 2rem;
-  border-radius: 1rem;
   overflow: hidden;
 }
 
@@ -63,30 +62,3 @@
   max-width: 28.125rem;
   margin: auto;
 }
-
-/* @keyframes glow-100 {
-  from {
-    text-shadow: 0 0 5px var(--highlight-100), 0 0 10px var(--highlight-100), 0 0 15px var(--highlight-100), 0 0 20px var(--highlight-100);
-  }
-  to {
-    text-shadow: 0 0 10px var(--highlight-100), 0 0 20px var(--highlight-100), 0 0 30px var(--highlight-100), 0 0 40px var(--highlight-100);
-  }
-}
-
- @keyframes glow-200 {
-  from {
-    text-shadow: 0 0 5px var(--highlight-200), 0 0 10px var(--highlight-200), 0 0 15px var(--highlight-200), 0 0 20px var(--highlight-200);
-  }
-  to {
-    text-shadow: 0 0 10px var(--highlight-200), 0 0 20px var(--highlight-200), 0 0 30px var(--highlight-200), 0 0 40px var(--highlight-200);
-  }
-}
-
-@keyframes glow-300 {
-  from {
-    text-shadow: 0 0 5px var(--highlight-300), 0 0 10px var(--highlight-300), 0 0 15px var(--highlight-300), 0 0 20px var(--highlight-300);
-  }
-  to {
-    text-shadow: 0 0 10px var(--highlight-300), 0 0 20px var(--highlight-300), 0 0 30px var(--highlight-300), 0 0 40px var(--highlight-300);
-  }
-} */

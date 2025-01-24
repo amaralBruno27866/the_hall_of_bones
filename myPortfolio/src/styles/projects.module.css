@@ -3,8 +3,23 @@
   margin-bottom: 2rem;
 }
 
-.container img {
-  width: 79.3125rem;
-  height: 45.5625rem;
-  border-radius: 2rem;
+.info {
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos igualmente */
+  align-items: center;
+  gap: 2rem;
+  width: 100%; /* Garante que ocupe a largura do slide */
+}
+
+.gradientOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 33%; /* Define a altura do gradiente */
+  background: linear-gradient(to top, black, transparent); /* Gradiente de branco para transparente */
+}
+
+.content {
+  margin-bottom: 2rem;
 }
