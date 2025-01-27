@@ -11,7 +11,6 @@ import transactionRoutes from './src/backend/routes/transactionRoutes.js';
 import workRoutes from './src/backend/routes/workRoutes.js';
 import educationRoutes from './src/backend/routes/educationRoutes.js';
 import projectRoutes from './src/backend/routes/projectRoutes.js';
-import footerRoutes from './src/backend/routes/footerRoutes.js';
 import contactRoutes from './src/backend/routes/contactRoutes.js';
 
 dotenv.config();
@@ -39,7 +38,6 @@ app.use('/api', transactionRoutes);
 app.use('/api', workRoutes);
 app.use('/api', educationRoutes);
 app.use('/api', projectRoutes);
-app.use('/api', footerRoutes);
 app.use('/api', contactRoutes);
 
 // Basic route
