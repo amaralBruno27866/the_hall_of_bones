@@ -1,9 +1,10 @@
-/* eslint-disable no-undef */
 import express from 'express';
-import mongoose from 'mongoose';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import morgan from 'morgan';
 
+// Import routes
 import userRoutes from './src/backend/routes/userRoutes.js';
 import authRoutes from './src/backend/routes/authRoutes.js';
 import aboutCardRoutes from './src/backend/routes/aboutRoutes.js';
@@ -19,6 +20,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+app.use(cors({
+  origin: 'http://localhost:3000', // Permitir requisições do frontend
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 

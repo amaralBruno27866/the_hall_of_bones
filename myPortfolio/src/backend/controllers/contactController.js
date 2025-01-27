@@ -1,5 +1,19 @@
 import Contact from "../models/Contact.js";
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { verifyPassword, recordTransaction } from '../utils.js';
+
+// Carregar variáveis de ambiente
+dotenv.config();
+
+// Configurar o nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // ou outro serviço de e-mail
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 export const createContact = async (req, res) => {
   const { name, phone, email, subject, message } = req.body;
@@ -8,7 +22,39 @@ export const createContact = async (req, res) => {
     const contact = new Contact({ name, phone, email, subject, message });
     await contact.save();
 
-    console.log('Constac created sucessfully', contact);
+    // Enviar e-mail de notificação para você
+    const notificationMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.NOTIFICATION_EMAIL,
+      subject: 'New Contact Message',
+      text: `You have received a new contact message from ${name}.\n\nContact Details:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${message}\n\nPlease check the dashboard for more details.`
+    };
+
+    transporter.sendMail(notificationMailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending notification email:', error);
+      } else {
+        console.log('Notification email sent:', info.response);
+      }
+    });
+
+    // Enviar e-mail de agradecimento para o cliente
+    const thankYouMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Thank You for Contacting Us',
+      text: `Hello ${name},\n\nThank you for reaching out. We have received your message and will get back to you shortly.\n\nBest regards,\nBruno Alencar Amaral`
+    };
+
+    transporter.sendMail(thankYouMailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending thank you email:', error);
+      } else {
+        console.log('Thank you email sent:', info.response);
+      }
+    });
+
+    console.log('Contact created successfully', contact);
     res.status(201).json({ message: "Contact created successfully" });
   } catch (error) {
     console.error('Error creating contact', error);
