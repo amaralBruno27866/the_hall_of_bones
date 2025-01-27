@@ -15,10 +15,8 @@ export function Footer() {
             </div>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
             <div className={styles.socials}>
-              <a href="#"> <BsFacebook size={20} /> </a>
-              <a href="#"> <BsInstagram size={20} /> </a>
-              <a href="#"> <BsLinkedin size={20} /> </a>
-              <a href="#"> <BsGithub size={20} /> </a>
+              <a href="https://www.linkedin.com/in/brunoalencaramaral/"> <BsLinkedin size={20} /> </a>
+              <a href="https://github.com/amaralBruno27866"> <BsGithub size={20} /> </a>
             </div>
           </div>
 
