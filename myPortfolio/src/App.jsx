@@ -15,14 +15,14 @@ import styles from './app.module.css';
 export function App() {
   return (
     <div className="container">
-      <Navbar className={styles.navbar}/>
+      <Navbar />
       <Home />
       <About />
       <Education />
       <WorkExperience />
       <Projects />
       <ContactForm />
-      <Footer className={styles.footer}/>
+      <Footer />
       <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
