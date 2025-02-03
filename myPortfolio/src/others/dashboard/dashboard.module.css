@@ -5,10 +5,23 @@
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #343a40;
   color: white;
   padding: 1rem;
+  position: relative;
+}
+
+.header h1 {
+  flex: 1;
   text-align: center;
+}
+
+.header .icon {
+  position: absolute;
+  right: 1rem;
 }
 
 .container {
@@ -34,6 +47,18 @@
 .sidebar ul li a {
   text-decoration: none;
   color: #343a40;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #e2e6ea;
+}
+
+.sidebar ul li a.active {
+  background-color: #e2e6ea;
+  color: #007bff;
 }
 
 .content {
