@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const aboutCardSchema = new mongoose.Schema({
-  icon: {
-    type: String,
-    required: true,
-  },
   title: {
     type: String,
     required: true,
