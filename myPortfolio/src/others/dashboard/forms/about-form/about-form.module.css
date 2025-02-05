@@ -1,0 +1,100 @@
+.aboutForm {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.header button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background-color: #0056b3;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.table td img {
+  max-width: 100px;
+  height: auto;
+}
+
+.table td .icon {
+  margin-right: 1rem; /* Espaçamento de 1rem entre os ícones */
+  color: #6c757d; /* Bootstrap gray color */
+  cursor: pointer;
+}
+
+.table td .icon:last-child {
+  margin-right: 0; /* Remover margem do último ícone */
+}
+
+.table td .icon:hover {
+  color: #007bff; /* Default hover color */
+}
+
+.table td .icon-pencil:hover,
+.table td .icon-pencil.icon-active {
+  color: #28a745; /* Bootstrap green color */
+}
+
+.table td .icon-trash:hover,
+.table td .icon-trash.icon-active {
+  color: #dc3545; /* Bootstrap red color */
+}
+
+.table td .icon-upload:hover,
+.table td .icon-upload.icon-active {
+  color: #007bff; /* Bootstrap blue color */
+}
+
+/* Definir larguras específicas para cada coluna */
+.table th:nth-child(1), .table td:nth-child(1) {
+  width: 10rem; /* Largura para a coluna de imagem */
+}
+
+.table th:nth-child(2), .table td:nth-child(2) {
+  width: 10rem; /* Largura para a coluna de título */
+}
+
+.table th:nth-child(3), .table td:nth-child(3) {
+  width: 20rem; /* Largura para a coluna de parágrafo */
+}
+
+.table th:nth-child(4), .table td:nth-child(4) {
+  width: 2rem; /* Largura para a coluna de ações */
+  text-align: center; /* Centralizar conteúdo da coluna de ações */
+}
+
+.table td .actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
