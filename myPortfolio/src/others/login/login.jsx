@@ -3,17 +3,24 @@ import { useNavigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './login.module.css';
 import logo from '../../assets/images/my_logo.png';
+import axios from 'axios';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Adicione a lógica de autenticação aqui
-    // Se a autenticação for bem-sucedida, redirecione para o dashboard
-    navigate('/dashboard');
+    try {
+      const response = await axios.post('/api/auth/login', { email, password });
+      const { token } = response.data;
+      localStorage.setItem('token', token); // Armazenar o token no localStorage
+      navigate('/dashboard'); // Redirecionar para o dashboard
+    } catch (error) {
+      setError('Invalid email or password');
+    }
   };
 
   return (
