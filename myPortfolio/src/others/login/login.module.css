@@ -45,3 +45,20 @@
   margin-top: 1rem;
   text-align: center;
 }
+
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.passwordToggle:hover {
+  color: blue;
+}
