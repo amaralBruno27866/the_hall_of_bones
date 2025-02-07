@@ -16,7 +16,7 @@ export function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/login', { email, password });
+      const response = await axios.post('/login', { email, password }); // Atualizar a URL aqui
       const { token } = response.data;
       localStorage.setItem('token', token); // Armazenar o token no localStorage
       navigate('/dashboard'); // Redirecionar para o dashboard
