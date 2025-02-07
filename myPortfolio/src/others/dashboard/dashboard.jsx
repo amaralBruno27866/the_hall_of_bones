@@ -3,12 +3,30 @@ import styles from './dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BsDoorOpenFill } from "react-icons/bs";
 import { AboutForm } from './forms/about-form/about-form.jsx';
+import axios from '../../config/axiosConfig';
+import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
   const [activeLink, setActiveLink] = useState('Home');
+  const navigate = useNavigate();
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post('/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      localStorage.removeItem('token');
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   const renderContent = () => {
@@ -30,7 +48,11 @@ export function Dashboard() {
     <div className={styles.dashboard}>
       <header className={styles.header}>
         <h1>My Dashboard</h1>
-        <BsDoorOpenFill size={30} className={styles.icon} />
+        <BsDoorOpenFill
+          size={30}
+          className={styles.icon}
+          onClick={handleLogout}
+        />
       </header>
       <div className={styles.container}>
         <nav className={styles.sidebar}>

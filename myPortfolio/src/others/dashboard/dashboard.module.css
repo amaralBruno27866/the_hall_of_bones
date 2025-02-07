@@ -19,9 +19,15 @@
   text-align: center;
 }
 
-.header .icon {
+.icon {
   position: absolute;
   right: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: blue; /* Cor azul padrão */
 }
 
 .container {
