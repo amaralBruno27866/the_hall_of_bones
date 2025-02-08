@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import jwt from 'jsonwebtoken';
 import User from '../src/backend/models/User.js';
 
@@ -18,13 +17,6 @@ const authMiddleware = async (req, res, next) => {
     if (!user) {
       console.log('User not found or token invalid');
       throw new Error();
-    }
-
-    // Verificar se o token está expirado
-    const currentTime = Math.floor(Date.now() / 1000);
-    if (decoded.exp < currentTime) {
-      console.log('Token expired');
-      return res.status(401).json({ error: 'Token expired' });
     }
 
     req.user = user;

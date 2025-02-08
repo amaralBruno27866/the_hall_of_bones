@@ -1,0 +1,73 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #343a40;
+  color: white;
+  padding: 1rem;
+  position: relative;
+}
+
+.header h1 {
+  flex: 1;
+  text-align: center;
+}
+
+.icon {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: blue; /* Cor azul padrão */
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background-color: #f8f9fa;
+  width: 250px;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #343a40;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #e2e6ea;
+}
+
+.sidebar ul li a.active {
+  background-color: #e2e6ea;
+  color: #007bff;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+}

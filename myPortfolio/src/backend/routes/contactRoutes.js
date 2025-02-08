@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/contacts', createContact);
 router.get('/contacts', getContacts);
-router.delete('/contacts/:id', authMiddleware,deleteContact);
+router.delete('/contacts/:id', authMiddleware, deleteContact);
 
 export default router;

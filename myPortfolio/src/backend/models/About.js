@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const aboutCardSchema = new mongoose.Schema({
-  icon: {
+  image: {
     type: String,
     required: true,
   },
