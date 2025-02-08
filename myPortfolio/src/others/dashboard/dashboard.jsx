@@ -39,6 +39,8 @@ export function Dashboard() {
         return <p>Works Content</p>;
       case 'Projects':
         return <p>Projects Content</p>;
+      case 'Users':
+        return <p>Users</p>;
       default:
         return <p>Welcome to the dashboard!</p>;
     }
@@ -91,6 +93,15 @@ export function Dashboard() {
                 onClick={() => handleLinkClick('Projects')}
               >
                 Projects
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={activeLink === 'Users' ? styles.active : ''}
+                onClick={() => handleLinkClick('Users')}
+              >
+                Users
               </a>
             </li>
           </ul>
