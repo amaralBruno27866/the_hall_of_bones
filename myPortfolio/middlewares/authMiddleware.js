@@ -19,6 +19,13 @@ const authMiddleware = async (req, res, next) => {
       throw new Error();
     }
 
+    // Verificar se o token está expirado
+    const currentTime = Math.floor(Date.now() / 1000);
+    if (decoded.exp < currentTime) {
+      console.log('Token expired');
+      return res.status(401).json({ error: 'Token expired' });
+    }
+
     req.user = user;
     req.token = token;
     next();

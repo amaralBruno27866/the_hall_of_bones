@@ -22,7 +22,7 @@ export const checkEmailExists = async (email) => {
 
 // Função para gerar um token JWT
 export const generateToken = (user) => {
-  return jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '12h' });
 };
 
 // Função para verificar a senha
