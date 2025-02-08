@@ -4,7 +4,7 @@ import authMiddleware from '../../../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/login', login); // Certifique-se de que a rota está correta
+router.post('/login', login);
 router.post('/logout', authMiddleware, logout);
 
 export default router;
