@@ -1,15 +1,11 @@
 import Work from '../models/Work.js';
-import { verifyPassword, recordTransaction } from '../utils.js';
+import { recordTransaction } from '../utils.js';
 
 // This function will create a new work experience entry in the database
 export const createWork = async (req, res) => {
   const { company, url, image, address, period, type, position, responsibilities, achievements } = req.body;
 
   try {
-    if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied. Only admins can create new work experiences.' });
-    }
-
     const work = new Work({ company, url, image, address, period, type, position, responsibilities, achievements });
     await work.save();
 
@@ -38,15 +34,13 @@ export const getWorkExperiences = async (req, res) => {
 // This function will update a work experience
 export const updateWorkExperience = async (req, res) => {
   const { id } = req.params;
-  const { company, url, image, address, period, type, position, responsibilities, achievements, password } = req.body;
+  const { company, url, image, address, period, type, position, responsibilities, achievements } = req.body;
 
   try {
     const workExperience = await Work.findById(id);
     if (!workExperience) {
       return res.status(404).json({ message: 'Work experience not found' });
     }
-
-    await verifyPassword(password, req.user.password);
 
     const oldDetails = { 
       company: workExperience.company, 
@@ -86,10 +80,6 @@ export const deleteWorkExperience = async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied. Only admins can delete work experiences.' });
-    }
-
     const workExperience = await Work.findByIdAndDelete(id);
     if (!workExperience) {
       return res.status(404).json({ message: 'Work experience not found' });
