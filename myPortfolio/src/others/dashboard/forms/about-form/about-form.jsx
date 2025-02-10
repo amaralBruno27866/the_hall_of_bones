@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './about-form.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { BsFillPencilFill, BsFillTrashFill, BsCloudUploadFill } from "react-icons/bs";
+import { BsFillPencilFill, BsFillTrashFill, BsCloudUploadFill, BsArrowRepeat } from "react-icons/bs";
 import axios from '../../../../config/axiosConfig';
 
 export function AboutForm() {
@@ -10,14 +10,32 @@ export function AboutForm() {
   const [error, setError] = useState(null);
   const [activeIcon, setActiveIcon] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const [newCard, setNewCard] = useState({
     image: '',
     title: '',
     paragraph: ''
   });
+  const [editMode, setEditMode] = useState(false);
+  const [editId, setEditId] = useState(null);
 
-  const handleIconClick = (icon) => {
-    setActiveIcon(icon);
+  const handleIconClick = (icon, id) => {
+    setActiveIcon({ icon, id });
+    if (icon === 'pencil') {
+      const item = aboutData.find(item => item._id === id);
+      setNewCard({
+        image: item.image,
+        title: item.title,
+        paragraph: item.paragraph
+      });
+      setEditMode(true);
+      setEditId(id);
+      setShowForm(true);
+    } else if (icon === 'trash') {
+      setDeleteId(id);
+      setShowDeleteModal(true);
+    }
   };
 
   const handleDocumentClick = (event) => {
@@ -33,29 +51,29 @@ export function AboutForm() {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = localStorage.getItem('token');
-      try {
-        const response = await axios.get('/about/cards', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        if (Array.isArray(response.data)) {
-          setAboutData(response.data);
-        } else {
-          console.error('Response data is not an array:', response.data);
-          setError('Unexpected response format');
+  const fetchData = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get('/about/cards', {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-        setLoading(false);
-      } catch (error) {
-        console.error('There was an error fetching the data!', error);
-        setError('Error fetching data');
-        setLoading(false);
+      });
+      if (Array.isArray(response.data)) {
+        setAboutData(response.data);
+      } else {
+        console.error('Response data is not an array:', response.data);
+        setError('Unexpected response format');
       }
-    };
+      setLoading(false);
+    } catch (error) {
+      console.error('There was an error fetching the data!', error);
+      setError('Error fetching data');
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -67,13 +85,29 @@ export function AboutForm() {
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.post('/about/cards', newCard, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setAboutData([...aboutData, response.data]);
+      if (editMode) {
+        const response = await axios.put(`/about/cards/${editId}`, newCard, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setAboutData(aboutData.map(item => (item._id === editId ? response.data : item)));
+      } else {
+        const response = await axios.post('/about/cards', newCard, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setAboutData([...aboutData, response.data]);
+      }
       setShowForm(false);
+      setEditMode(false);
+      setEditId(null);
+      setNewCard({
+        image: '',
+        title: '',
+        paragraph: ''
+      });
     } catch (error) {
       console.error('There was an error saving the data!', error);
       setError('Error saving data');
@@ -82,6 +116,40 @@ export function AboutForm() {
 
   const handleCancel = () => {
     setShowForm(false);
+    setEditMode(false);
+    setEditId(null);
+    setNewCard({
+      image: '',
+      title: '',
+      paragraph: ''
+    });
+  };
+
+  const handleDelete = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      await axios.delete(`/about/cards/${deleteId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setAboutData(aboutData.filter(item => item._id !== deleteId));
+      setShowDeleteModal(false);
+      setDeleteId(null);
+    } catch (error) {
+      console.error('There was an error deleting the data!', error);
+      setError('Error deleting data');
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  };
+
+  const handleRefresh = () => {
+    setLoading(true);
+    fetchData();
   };
 
   if (loading) {
@@ -95,6 +163,7 @@ export function AboutForm() {
   return (
     <section className={styles.aboutForm}>
       <header className={styles.header}>
+        <BsArrowRepeat size={30} className={styles.refreshIcon} onClick={handleRefresh} />
         <h2>About Section Form</h2>
         <button onClick={() => setShowForm(true)}>Add a new content</button>
       </header>
@@ -117,18 +186,18 @@ export function AboutForm() {
                 <td className={styles.actions}>
                   <BsFillPencilFill
                     size={30}
-                    className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon === 'pencil' ? styles['icon-active'] : ''}`}
-                    onClick={() => handleIconClick('pencil')}
+                    className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === item._id ? styles['icon-active'] : ''}`}
+                    onClick={() => handleIconClick('pencil', item._id)}
                   />
                   <BsFillTrashFill
                     size={30}
-                    className={`${styles.icon} ${styles['icon-trash']} ${activeIcon === 'trash' ? styles['icon-active'] : ''}`}
-                    onClick={() => handleIconClick('trash')}
+                    className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === item._id ? styles['icon-active'] : ''}`}
+                    onClick={() => handleIconClick('trash', item._id)}
                   />
                   <BsCloudUploadFill
                     size={30}
-                    className={`${styles.icon} ${styles['icon-upload']} ${activeIcon === 'upload' ? styles['icon-active'] : ''}`}
-                    onClick={() => handleIconClick('upload')}
+                    className={`${styles.icon} ${styles['icon-upload']} ${activeIcon?.icon === 'upload' && activeIcon?.id === item._id ? styles['icon-active'] : ''}`}
+                    onClick={() => handleIconClick('upload', item._id)}
                   />
                 </td>
               </tr>
@@ -139,7 +208,7 @@ export function AboutForm() {
       {showForm && (
         <div className={styles.overlay}>
           <div className={styles.formContainer}>
-            <h2>Add New Content</h2>
+            <h2>{editMode ? 'Edit Content' : 'Add New Content'}</h2>
             <form>
               <div className="form-group">
                 <label>Image URL</label>
@@ -175,6 +244,20 @@ export function AboutForm() {
                 <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {showDeleteModal && (
+        <div className={styles.overlay}>
+          <div className={styles.modal}>
+            <header className={styles.modalHeader}>
+              <h2>About Section Form</h2>
+            </header>
+            <p>Are you sure that you want to delete this card?</p>
+            <div className={styles.buttonGroup}>
+              <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleDelete}>YES</button>
+              <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleCancelDelete}>NO</button>
+            </div>
           </div>
         </div>
       )}

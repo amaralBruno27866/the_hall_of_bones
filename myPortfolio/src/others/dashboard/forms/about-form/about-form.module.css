@@ -26,6 +26,15 @@
   background-color: #0056b3;
 }
 
+.refreshIcon {
+  cursor: pointer;
+  color: gray;
+}
+
+.refreshIcon:hover {
+  color: blue;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -120,8 +129,54 @@
   width: 400px;
 }
 
-.buttonGroup {
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.modalHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.icon-close {
+  cursor: pointer;
+  color: gray;
+}
+
+.icon-close:hover {
+  color: red;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 20px;
+}
+
+.buttonGroup button {
+  width: 100px;
+  padding: 0.5rem;
+  background-color: gray;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttonGroup button:hover {
+  background-color: darkgray;
+}
+
+.buttonGroup .btn-primary:hover {
+  background-color: blue;
+}
+
+.buttonGroup .btn-danger:hover {
+  background-color: red;
 }
