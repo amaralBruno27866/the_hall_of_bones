@@ -1,15 +1,11 @@
 import AboutCard from '../models/About.js';
-import { verifyPassword, recordTransaction } from '../utils.js';
+import { recordTransaction } from '../utils.js';
 
 // This function will create a new about card
 export const createAboutCard = async (req, res) => {
   const { image, title, paragraph, session } = req.body;
 
   try {
-    if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied. Only admins can create new cards.' });
-    }
-
     const aboutCard = new AboutCard({ image, title, paragraph, session });
     await aboutCard.save();
 
@@ -38,15 +34,13 @@ export const getAboutCards = async (req, res) => {
 // This function will update an about card
 export const updateAboutCard = async (req, res) => {
   const { id } = req.params;
-  const { icon, title, paragraph, session, password } = req.body;
+  const { image, title, paragraph, session } = req.body;
 
   try {
     const aboutCard = await AboutCard.findById(id);
     if (!aboutCard) {
       return res.status(404).json({ message: 'About card not found' });
     }
-
-    await verifyPassword(password, req.user.password);
 
     const oldDetails = { image: aboutCard.image, title: aboutCard.title, paragraph: aboutCard.paragraph, session: aboutCard.session };
     aboutCard.image = image || aboutCard.image;
@@ -71,10 +65,6 @@ export const deleteAboutCard = async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied. Only admins can delete cards.' });
-    }
-
     const aboutCard = await AboutCard.findByIdAndDelete(id);
     if (!aboutCard) {
       return res.status(404).json({ message: 'About card not found' });
