@@ -174,9 +174,9 @@
 }
 
 .buttonGroup .btn-primary:hover {
-  background-color: blue;
+  background-color: #dc3545;
 }
 
 .buttonGroup .btn-danger:hover {
-  background-color: red;
+  background-color: #007bff;
 }

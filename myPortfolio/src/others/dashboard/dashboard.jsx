@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BsDoorOpenFill } from "react-icons/bs";
 import { AboutForm } from './forms/about-form/about-form.jsx';
+import { EducationForm } from './forms/education-form/education-form.jsx';
 import axios from '../../config/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
   const [activeLink, setActiveLink] = useState('Home');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -34,7 +42,7 @@ export function Dashboard() {
       case 'About':
         return <AboutForm />;
       case 'Education':
-        return <p>Education Content</p>;
+        return <EducationForm />;
       case 'Works':
         return <p>Works Content</p>;
       case 'Projects':

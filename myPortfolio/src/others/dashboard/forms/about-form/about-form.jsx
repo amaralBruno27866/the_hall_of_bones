@@ -251,7 +251,7 @@ export function AboutForm() {
         <div className={styles.overlay}>
           <div className={styles.modal}>
             <header className={styles.modalHeader}>
-              <h2>About Section Form</h2>
+              <h2>Delete About Card</h2>
             </header>
             <p>Are you sure that you want to delete this card?</p>
             <div className={styles.buttonGroup}>
