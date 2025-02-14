@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../frontend/styles/dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BsDoorOpenFill } from "react-icons/bs";
-import { AboutForm } from './about-form';
+import { AboutForm } from './aboutForm';
 import axios from '../../config/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
