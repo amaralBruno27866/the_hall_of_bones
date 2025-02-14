@@ -67,7 +67,7 @@ export function Login() {
           {error && <p className={styles.error}>{error}</p>}
           <div className={styles.buttonGroup}>
             <button type="submit" className="btn btn-primary">Login</button>
-            <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>Cancel</button>
+            <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>Back to home</button>
           </div>
           <div className={styles.forgotPassword}>
             <Link to="/forgot-password">I forgot my password</Link>
