@@ -58,7 +58,7 @@ export function Dashboard() {
       <header className={styles.header}>
         <h1>My Dashboard</h1>
         <BsDoorOpenFill
-          size={30}
+          size={20}
           className={styles.icon}
           onClick={handleLogout}
         />

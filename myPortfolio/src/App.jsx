@@ -28,7 +28,7 @@ export function App() {
       </Routes>
       <div className={styles.copyright}>
         Copyright &copy; 2025 Bruno Alencar Amaral. All Rights Reserved.
-        <Link to="/login"> <BsDoorClosedFill size={30}/> </Link>
+        <Link to="/login"> <BsDoorClosedFill size={20}/> </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/about-form.module.css';
 
-export function AboutFormModal({ newCard, editMode, handleInputChange, handleSave, handleCancel }) {
+export function AboutEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.formContainer}>

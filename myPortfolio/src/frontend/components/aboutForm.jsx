@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAboutForm } from '../hooks/useAboutForm';
 import { AboutTable } from './aboutTable';
-import { AboutFormModal } from './aboutFormModal';
+import { AboutEditModal } from './aboutEditModal';
 import { AboutDeleteModal } from './aboutDeleteModal';
 import styles from '../styles/about-form.module.css';
 import { BsArrowRepeat } from "react-icons/bs";
@@ -43,7 +43,7 @@ export function AboutForm() {
       </header>
       <AboutTable aboutData={aboutData} handleIconClick={handleIconClick} activeIcon={activeIcon} />
       {showForm && (
-        <AboutFormModal
+        <AboutEditModal
           newCard={newCard}
           editMode={editMode}
           handleInputChange={handleInputChange}
