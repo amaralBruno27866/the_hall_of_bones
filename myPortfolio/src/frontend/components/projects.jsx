@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/projects.module.css';
+import styles from '../styles/projects.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import project1 from '../../assets/images/project1.jpg';
 import project2 from '../../assets/images/project2.jpg';

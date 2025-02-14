@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/about.module.css';
+import styles from '../styles/about.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import loading from '../../assets/images/loading.gif';
 

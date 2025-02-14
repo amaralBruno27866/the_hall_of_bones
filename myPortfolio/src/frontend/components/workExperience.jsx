@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/workExperience.module.css';
+import styles from '../styles/workExperience.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import load from '../../assets/images/loading.gif';
 

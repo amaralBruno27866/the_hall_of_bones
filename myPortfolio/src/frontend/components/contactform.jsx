@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../../config/axiosConfig.js';
-import styles from '../../styles/contactform.module.css';
+import styles from '../styles/contactform.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import form from '../../assets/images/form.gif';
 

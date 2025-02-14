@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/education.module.css';
+import styles from '../styles/education.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import image1 from '../../assets/images/image1.png';
 import image2 from '../../assets/images/image2.png';

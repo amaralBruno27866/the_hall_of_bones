@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/home.module.css';
+import styles from '../styles/home.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export function Home() {

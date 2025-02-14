@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/footer.module.css';
+import styles from '../styles/footer.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BsFacebook, BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 import logo from '../../assets/images/my_logo.png';

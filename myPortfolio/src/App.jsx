@@ -8,7 +8,7 @@ import { WorkExperience } from './frontend/components/workExperience';
 import { Projects } from './frontend/components/projects';
 import { ContactForm } from './frontend/components/contactform';
 import { Footer } from './frontend/components/footer';
-import { Login } from './others/login/login.jsx';
+import { Login } from './frontend/components/login.jsx';
 import { BsDoorClosedFill } from "react-icons/bs";
 import styles from './app.module.css';
 
