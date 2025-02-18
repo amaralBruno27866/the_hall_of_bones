@@ -22,7 +22,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
       <div className={styles.formContainer}>
         <h2>{editMode ? 'Edit Education' : 'Add New Education'}</h2>
         <form>
-          {/* Informações Básicas */}
+          {/* Basic information */}
           <div className="form-group">
             <label>Institution</label>
             <input
@@ -74,7 +74,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             />
           </div>
 
-          {/* Período de Estudo */}
+          {/* Period */}
           <div className="form-group">
             <label>Start Month</label>
             <input
@@ -116,7 +116,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             />
           </div>
 
-          {/* Endereço */}
+          {/* Address */}
           <div className="form-group">
             <label>Number</label>
             <input
@@ -178,7 +178,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             />
           </div>
 
-          {/* Habilidades */}
+          {/* Skills */}
           <div className="form-group">
             <label>Skills</label>
             <div className={styles.skillsInput}>
