@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/education-form.module.css';
+import styles from '../styles/form.module.css';
 
 export function EducationDeleteModal({ handleDelete, handleCancelDelete }) {
   return (

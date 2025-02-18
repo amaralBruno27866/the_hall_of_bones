@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/about-form.module.css';
+import styles from '../styles/form.module.css';
 
 export function AboutDeleteModal({ handleDelete, handleCancelDelete }) {
   return (

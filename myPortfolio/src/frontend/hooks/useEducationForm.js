@@ -29,7 +29,7 @@ export const useEducationForm = () => {
       zip: '',
       country: ''
     },
-    skills: []
+    skill: []
   });
   const [editMode, setEditMode] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -58,7 +58,7 @@ export const useEducationForm = () => {
           zip: item.address.zip,
           country: item.address.country
         },
-        skills: item.skills
+        skill: item.skill
       });
       setEditMode(true);
       setEditId(id);
@@ -154,7 +154,7 @@ export const useEducationForm = () => {
           zip: '',
           country: ''
         },
-        skills: []
+        skill: []
       });
     } catch (error) {
       console.error('There was an error saving the data!', error);
@@ -186,7 +186,7 @@ export const useEducationForm = () => {
         zip: '',
         country: ''
       },
-      skills: []
+      skill: []
     });
   };
 

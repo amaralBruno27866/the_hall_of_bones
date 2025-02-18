@@ -3,7 +3,7 @@ import { useEducationForm } from '../hooks/useEducationForm';
 import { EducationTable } from './educationTable';
 import { EducationEditModal } from './educationEditModal';
 import { EducationDeleteModal } from './educationDeleteModal';
-import styles from '../styles/education-form.module.css';
+import styles from '../styles/form.module.css';
 import { BsArrowRepeat } from "react-icons/bs";
 
 export function EducationForm() {

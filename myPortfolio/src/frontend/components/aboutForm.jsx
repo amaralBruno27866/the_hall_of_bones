@@ -3,7 +3,7 @@ import { useAboutForm } from '../hooks/useAboutForm';
 import { AboutTable } from './aboutTable';
 import { AboutEditModal } from './aboutEditModal';
 import { AboutDeleteModal } from './aboutDeleteModal';
-import styles from '../styles/about-form.module.css';
+import styles from '../styles/form.module.css';
 import { BsArrowRepeat } from "react-icons/bs";
 
 export function AboutForm() {
@@ -35,7 +35,7 @@ export function AboutForm() {
   }
 
   return (
-    <section className={styles.aboutForm}>
+    <section className={styles.basicForm}>
       <header className={styles.header}>
         <BsArrowRepeat size={30} className={styles.refreshIcon} onClick={handleRefresh} />
         <h2>About Section Form</h2>

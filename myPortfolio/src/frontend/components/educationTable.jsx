@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsFillPencilFill, BsFillTrashFill, BsCloudUploadFill } from "react-icons/bs";
-import styles from '../styles/education-form.module.css';
+import styles from '../styles/form.module.css';
 
 export function EducationTable({ educationData = [], handleIconClick, activeIcon }) {
   return (
@@ -20,7 +20,7 @@ export function EducationTable({ educationData = [], handleIconClick, activeIcon
           </tr>
         </thead>
         <tbody>
-          {educationData.map((item) => (
+          {Array.isArray(educationData) && educationData.map((item) => (
             <tr key={item._id}>
               <td>{item.institution}</td>
               <td><img src={item.image} alt={item.institution} className={styles.image} /></td>
@@ -33,7 +33,7 @@ export function EducationTable({ educationData = [], handleIconClick, activeIcon
                 <div className={styles.dropdown}>
                   <button className={styles.dropbtn}>Skills</button>
                   <div className={styles.dropdownContent}>
-                    {item.skills.map((skill, index) => (
+                    {item.skill.map((skill, index) => (
                       <span key={index}>{skill}</span>
                     ))}
                   </div>
