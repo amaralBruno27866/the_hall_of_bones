@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillPencilFill, BsFillTrashFill, BsCloudUploadFill } from "react-icons/bs";
 import styles from '../styles/education-form.module.css';
 
-export function EducationTable({ educationData, handleIconClick, activeIcon }) {
+export function EducationTable({ educationData = [], handleIconClick, activeIcon }) {
   return (
     <div>
       <table className={styles.table}>

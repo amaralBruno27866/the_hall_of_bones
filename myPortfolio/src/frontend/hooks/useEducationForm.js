@@ -58,7 +58,7 @@ export const useEducationForm = () => {
           zip: item.address.zip,
           country: item.address.country
         },
-        skills: []
+        skills: item.skills
       });
       setEditMode(true);
       setEditId(id);
@@ -75,17 +75,17 @@ export const useEducationForm = () => {
     }
   };
 
-  UNSAFE_useFogOFWarDiscovery(() => {
+  useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
     return () => {
       document.removeEventListener('click', handleDocumentClick);
     };
   }, []);
 
-  const fethcData = async () => {
+  const fetchData = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get('/education', {
+      const response = await axios.get('/educations', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -93,38 +93,38 @@ export const useEducationForm = () => {
       if (Array.isArray(response.data)) {
         setEducationData(response.data);
       } else {
-        console.error('Response data is not an array: ', response.data);
+        console.error('Response data is not an array:', response.data);
         setError('Unexpected response format');
       }
       setLoading(false);
     } catch (error) {
-      console.error('There was an error fetching the data: ', error);
+      console.error('There was an error fetching the data!', error);
       setError('Error fetching data');
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fethcData();
+    fetchData();
   }, []);
 
-  const handleInputChange  = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewCard({...newCard, [name]: value });
+    setNewCard({ ...newCard, [name]: value });
   };
 
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     try {
       if (editMode) {
-        const response = await axios.put(`/education/${editId}`, newCard, {
+        const response = await axios.put(`/educations/${editId}`, newCard, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         setEducationData(educationData.map(item => item._id === editId ? response.data : item));
       } else {
-        const response = await axios.post('/education', newCard, {
+        const response = await axios.post('/educations', newCard, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -190,10 +190,10 @@ export const useEducationForm = () => {
     });
   };
 
-  const handleDelete  = async () => {
+  const handleDelete = async () => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`/education/${deleteId}`, {
+      await axios.delete(`/educations/${deleteId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -210,12 +210,12 @@ export const useEducationForm = () => {
   const handleCancelDelete = () => {
     setShowDeleteModal(false);
     setDeleteId(null);
-  }
+  };
 
   const handleRefresh = () => {
     setLoading(true);
-    fethcData();
-  }
+    fetchData();
+  };
 
   return {
     educationData,
@@ -226,13 +226,13 @@ export const useEducationForm = () => {
     showDeleteModal,
     newCard,
     editMode,
-    editId,
     handleIconClick,
     handleInputChange,
     handleSave,
     handleCancel,
     handleDelete,
     handleCancelDelete,
-    handleRefresh
-  }
-}
+    handleRefresh,
+    setShowForm,
+  };
+};

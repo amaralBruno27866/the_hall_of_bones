@@ -3,6 +3,7 @@ import styles from '../../frontend/styles/dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BsDoorOpenFill } from "react-icons/bs";
 import { AboutForm } from './aboutForm';
+import { EducationForm } from './educationForm';
 import axios from '../../config/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,7 +42,7 @@ export function Dashboard() {
       case 'About':
         return <AboutForm />;
       case 'Education':
-        return <p>Works Content</p>;
+        return <EducationForm />;
       case 'Works':
         return <p>Works Content</p>;
       case 'Projects':
