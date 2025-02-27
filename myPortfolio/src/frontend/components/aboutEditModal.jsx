@@ -37,8 +37,8 @@ export function AboutEditModal({ newCard, editMode, handleInputChange, handleSav
             />
           </div>
           <div className={styles.buttonGroup}>
-            <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleSave}>Save</button>
-            <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleCancel}>Cancel</button>
+            <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleSave}>Save</button>
+            <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleCancel}>Cancel</button>
           </div>
         </form>
       </div>

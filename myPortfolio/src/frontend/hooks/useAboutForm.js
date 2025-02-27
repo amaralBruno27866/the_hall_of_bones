@@ -81,16 +81,23 @@ export const useAboutForm = () => {
 
   const handleSave = async () => {
     const token = localStorage.getItem('token');
+    const data = {
+      image: newCard.image,
+      title: newCard.title,
+      paragraph: newCard.paragraph,
+      session: 'about'
+    };
+
     try {
       if (editMode) {
-        const response = await axios.put(`/about/cards/${editId}`, newCard, {
+        const response = await axios.put(`/about/cards/${editId}`, data, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         setAboutData(aboutData.map(item => (item._id === editId ? response.data : item)));
       } else {
-        const response = await axios.post('/about/cards', newCard, {
+        const response = await axios.post('/about/cards', data, {
           headers: {
             Authorization: `Bearer ${token}`
           }

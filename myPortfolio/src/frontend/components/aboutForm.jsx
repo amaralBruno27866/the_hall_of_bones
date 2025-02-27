@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAboutForm } from '../hooks/useAboutForm';
-import { AboutTable } from './aboutTable';
+import { CardAbout } from './elements/card_about/card-about';
 import { AboutEditModal } from './aboutEditModal';
 import { AboutDeleteModal } from './aboutDeleteModal';
 import styles from '../styles/form.module.css';
@@ -18,6 +18,7 @@ export function AboutForm() {
     editMode,
     handleIconClick,
     handleInputChange,
+    handleFileChange,
     handleSave,
     handleCancel,
     handleDelete,
@@ -41,12 +42,22 @@ export function AboutForm() {
         <h2>About Section Form</h2>
         <button onClick={() => setShowForm(true)}>Add a new content</button>
       </header>
-      <AboutTable aboutData={aboutData} handleIconClick={handleIconClick} activeIcon={activeIcon} />
+      <div className={styles.cardContainer}>
+        {aboutData.map((item) => (
+          <CardAbout
+            key={item._id}
+            aboutData={item}
+            handleIconClick={handleIconClick}
+            activeIcon={activeIcon}
+          />
+        ))}
+      </div>
       {showForm && (
         <AboutEditModal
           newCard={newCard}
           editMode={editMode}
           handleInputChange={handleInputChange}
+          handleFileChange={handleFileChange}
           handleSave={handleSave}
           handleCancel={handleCancel}
         />

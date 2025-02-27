@@ -35,148 +35,157 @@
   color: blue;
 }
 
-.table {
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about {
+  width: 20rem;
+  height: 35rem;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  height: 100%;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container hr {
+  margin: 0;
+}
+
+.image {
+  border-radius: 0.8rem 0.8rem 0 0;
+}
+
+.image img {
   width: 100%;
-  border-collapse: collapse;
+  height: 100%;
+  border-radius: 0.8rem 0.8rem 0 0;
 }
 
-.table th, .table td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-  text-align: left;
+.title {
+  margin: 0.5rem;
 }
 
-.table th {
-  background-color: #f8f9fa;
+.text {
+  margin: 0.5rem;
+  flex-grow: 1;
 }
 
-.table td img {
-  max-width: 100px;
-  height: auto;
-}
-
-.table td .icon {
-  margin-right: 1rem; /* Espaçamento de 1rem entre os ícones */
-  color: #6c757d; /* Bootstrap gray color */
-  cursor: pointer;
-}
-
-.table td .icon:last-child {
-  margin-right: 0; /* Remover margem do último ícone */
-}
-
-.table td .icon:hover {
-  color: #007bff; /* Default hover color */
-}
-
-.table td .icon-pencil:hover,
-.table td .icon-pencil.icon-active {
-  color: #28a745; /* Bootstrap green color */
-}
-
-.table td .icon-trash:hover,
-.table td .icon-trash.icon-active {
-  color: #dc3545; /* Bootstrap red color */
-}
-
-.table td .icon-upload:hover,
-.table td .icon-upload.icon-active {
-  color: #007bff; /* Bootstrap blue color */
-}
-
-/* Definir larguras específicas para cada coluna */
-.table th:nth-child(1), .table td:nth-child(1) {
-  width: 10rem; /* Largura para a coluna de imagem */
-}
-
-.table th:nth-child(2), .table td:nth-child(2) {
-  width: 10rem; /* Largura para a coluna de título */
-}
-
-.table th:nth-child(3), .table td:nth-child(3) {
-  width: 20rem; /* Largura para a coluna de parágrafo */
-}
-
-.table th:nth-child(4), .table td:nth-child(4) {
-  width: 2rem; /* Largura para a coluna de ações */
-  text-align: center; /* Centralizar conteúdo da coluna de ações */
-}
-
-.table td .actions {
+.footer {
+  margin: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon-pencil {
+  color: darkblue;
+}
+
+.icon-pencil:hover {
+  color: lightblue;
+}
+
+.icon-trash {
+  color: darkred;
+}
+
+.icon-trash:hover {
+  color: lightcoral;
+}
+
+/* Styles for the modals */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.formContainer {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+.formContainer, .modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
 }
 
-.modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+.formContainer h2, .modal h2 {
+  margin-top: 0;
 }
 
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.form-group {
+  margin-bottom: 1rem;
 }
 
-.icon-close {
-  cursor: pointer;
-  color: gray;
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.icon-close:hover {
-  color: red;
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .buttonGroup {
   display: flex;
-  justify-content: center;
   gap: 1rem;
-  margin-top: 20px;
+  margin-top: 1rem;
 }
 
-.buttonGroup button {
-  width: 100px;
-  padding: 0.5rem;
-  background-color: gray;
+.btn {
+  padding: 0.5rem 1rem;
   border: none;
-  color: white;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
 }
 
-.buttonGroup button:hover {
-  background-color: darkgray;
-}
-
-.buttonGroup .btn-primary:hover {
-  background-color: #dc3545;
-}
-
-.buttonGroup .btn-danger:hover {
+.btn-primary {
   background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
 }
