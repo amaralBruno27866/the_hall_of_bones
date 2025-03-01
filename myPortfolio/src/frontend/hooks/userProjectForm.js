@@ -13,6 +13,7 @@ export const useProjectForm = () => {
     image: '',
     title: '',
     description: '',
+    category: '',
     technologies: [],
     github: ''
   });
@@ -27,6 +28,7 @@ export const useProjectForm = () => {
         image: item.image,
         title: item.title,
         description: item.description,
+        category: item.category,
         technologies: item.technologies,
         github: item.github
       });
@@ -44,9 +46,8 @@ export const useProjectForm = () => {
     setNewCard({ ...newCard, [name]: value });
   };
 
-  const handleTechnologiesChange = (e) => {
-    const { value } = e.target;
-    setNewCard({ ...newCard, technologies: value.split(',').map(tech => tech.trim()) });
+  const handleTechnologiesChange = (technologies) => {
+    setNewCard({ ...newCard, technologies });
   };
 
   const handleSave = async () => {
@@ -55,6 +56,7 @@ export const useProjectForm = () => {
       image: newCard.image,
       title: newCard.title,
       description: newCard.description,
+      category: newCard.category,
       technologies: newCard.technologies,
       github: newCard.github
     };
@@ -82,6 +84,7 @@ export const useProjectForm = () => {
         image: '',
         title: '',
         description: '',
+        category: '',
         technologies: [],
         github: ''
       });
@@ -99,6 +102,7 @@ export const useProjectForm = () => {
       image: '',
       title: '',
       description: '',
+      category: '',
       technologies: [],
       github: ''
     });

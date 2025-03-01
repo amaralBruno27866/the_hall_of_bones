@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
+import { useProjectForm } from '../hooks/userProjectForm';
 import { CardProject } from '../elements/card_project/card-project';
-import { useProjectForm } from "../hooks/userProjectForm";
-import { BsArrowRepeat } from "react-icons/bs";
+import { ProjectEditModal } from './projectEditModal';
+import { ProjectDeleteModal } from './projectDeleteModal';
 import styles from '../styles/form.module.css';
+import { BsArrowRepeat } from "react-icons/bs";
 
 export function ProjectForm() {
   const {
@@ -16,7 +18,7 @@ export function ProjectForm() {
     editMode,
     handleIconClick,
     handleInputChange,
-    handleFileChange,
+    handleTechnologiesChange,
     handleSave,
     handleCancel,
     handleDelete,
@@ -38,7 +40,7 @@ export function ProjectForm() {
       <header className={styles.header}>
         <BsArrowRepeat size={30} className={styles.refreshIcon} onClick={handleRefresh} />
         <h2>Project Section Form</h2>
-        <button onClick={() => setShowForm(true)}>Add a new content</button>
+        <button onClick={() => setShowForm(true)}>Add a new project</button>
       </header>
       <div className={styles.cardContainer}>
         {projectData.map((item) => (
@@ -50,6 +52,22 @@ export function ProjectForm() {
           />
         ))}
       </div>
+      {showForm && (
+        <ProjectEditModal
+          newCard={newCard}
+          editMode={editMode}
+          handleInputChange={handleInputChange}
+          handleTechnologiesChange={handleTechnologiesChange}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+        />
+      )}
+      {showDeleteModal && (
+        <ProjectDeleteModal
+          handleDelete={handleDelete}
+          handleCancelDelete={handleCancelDelete}
+        />
+      )}
     </section>
-  )
+  );
 }
