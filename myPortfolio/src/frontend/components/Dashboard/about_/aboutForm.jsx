@@ -1,14 +1,14 @@
 import React from 'react';
-import { useProjectForm } from '../hooks/userProjectForm';
-import { CardProject } from '../elements/card_project/card-project';
-import { ProjectEditModal } from './projectEditModal';
-import { ProjectDeleteModal } from './projectDeleteModal';
-import styles from '../styles/form.module.css';
+import { useAboutForm } from '../../../hooks/useAboutForm';
+import { CardAbout } from '../../../elements/card_about/card-about';
+import { AboutEditModal } from './aboutEditModal';
+import { AboutDeleteModal } from './aboutDeleteModal';
+import styles from '../../../styles/form.module.css';
 import { BsArrowRepeat } from "react-icons/bs";
 
-export function ProjectForm() {
+export function AboutForm() {
   const {
-    projectData,
+    aboutData,
     loading,
     error,
     activeIcon,
@@ -18,14 +18,14 @@ export function ProjectForm() {
     editMode,
     handleIconClick,
     handleInputChange,
-    handleTechnologiesChange,
+    handleFileChange,
     handleSave,
     handleCancel,
     handleDelete,
     handleCancelDelete,
     handleRefresh,
     setShowForm,
-  } = useProjectForm();
+  } = useAboutForm();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -39,31 +39,31 @@ export function ProjectForm() {
     <section className={styles.basicForm}>
       <header className={styles.header}>
         <BsArrowRepeat size={30} className={styles.refreshIcon} onClick={handleRefresh} />
-        <h2>Project Section Form</h2>
-        <button onClick={() => setShowForm(true)}>Add a new project</button>
+        <h2>About Section Form</h2>
+        <button onClick={() => setShowForm(true)}>Add a new content</button>
       </header>
       <div className={styles.cardContainer}>
-        {projectData.map((item) => (
-          <CardProject
+        {aboutData.map((item) => (
+          <CardAbout
             key={item._id}
-            projectData={item}
+            aboutData={item}
             handleIconClick={handleIconClick}
             activeIcon={activeIcon}
           />
         ))}
       </div>
       {showForm && (
-        <ProjectEditModal
+        <AboutEditModal
           newCard={newCard}
           editMode={editMode}
           handleInputChange={handleInputChange}
-          handleTechnologiesChange={handleTechnologiesChange}
+          handleFileChange={handleFileChange}
           handleSave={handleSave}
           handleCancel={handleCancel}
         />
       )}
       {showDeleteModal && (
-        <ProjectDeleteModal
+        <AboutDeleteModal
           handleDelete={handleDelete}
           handleCancelDelete={handleCancelDelete}
         />

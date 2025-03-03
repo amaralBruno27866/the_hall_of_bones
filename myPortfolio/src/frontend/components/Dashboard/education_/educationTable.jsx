@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsFillPencilFill, BsFillTrashFill, BsCloudUploadFill } from "react-icons/bs";
-import styles from '../styles/form.module.css';
+import styles from '../../../styles/education-form.module.css';
 
 export function EducationTable({ educationData = [], handleIconClick, activeIcon }) {
   return (

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BsDoorOpenFill } from "react-icons/bs";
-import { AboutForm } from './aboutForm';
-import { EducationForm } from './educationForm';
-import { ProjectForm } from './projectForm';
+import { AboutForm } from '../Dashboard/about_/aboutForm';
+import { EducationForm } from '../Dashboard/education_/educationForm';
+import { ProjectForm } from '../Dashboard/project_/projectForm';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../frontend/styles/dashboard.module.css';
+import styles from '../../styles/dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import axios from '../../config/axiosConfig';
+import axios from '../../../config/axiosConfig';
 
 export function Dashboard() {
   const [activeLink, setActiveLink] = useState('Home');

@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from '../styles/form.module.css';
+import styles from '../../../styles/form.module.css';
 
-export function ProjectDeleteModal({ handleDelete, handleCancelDelete }) {
+export function AboutDeleteModal({ handleDelete, handleCancelDelete }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <header className={styles.modalHeader}>
-          <h2>Delete Project Card</h2>
+          <h2>Delete About Card</h2>
         </header>
         <p>Are you sure that you want to delete this card?</p>
         <div className={styles.buttonGroup}>

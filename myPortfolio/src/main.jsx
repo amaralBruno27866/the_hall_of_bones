@@ -5,8 +5,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { App } from './App.jsx';
-import { Login } from './frontend/components/login.jsx';
-import { Dashboard } from './frontend/components/dashboard.jsx';
+import { Login } from './frontend/components/landingPage/login.jsx';
+import { Dashboard } from './frontend/components/landingPage/dashboard.jsx';
 import '../src/global.css';
 
 createRoot(document.getElementById('root')).render(

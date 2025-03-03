@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/form.module.css';
+import styles from '../../../styles/form.module.css';
 import { BsFileEarmarkPlusFill } from "react-icons/bs";
 
 export function ProjectEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel, handleTechnologiesChange }) {

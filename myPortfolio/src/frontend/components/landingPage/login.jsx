@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../../frontend/styles/login.module.css';
-import logo from '../../assets/images/my_logo.png';
-import axios from '../../config/axiosConfig';
+import styles from '../../styles/login.module.css';
+import logo from '../../../assets/images/my_logo.png';
+import axios from '../../../config/axiosConfig';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 export function Login() {
