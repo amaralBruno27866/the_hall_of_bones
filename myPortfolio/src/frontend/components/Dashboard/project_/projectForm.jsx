@@ -43,7 +43,7 @@ export function ProjectForm() {
         <button onClick={() => setShowForm(true)}>Add a new project</button>
       </header>
       <div className={styles.cardContainer}>
-        {projectData.map((item) => (
+        {Array.isArray(projectData) && projectData.map((item) => (
           <CardProject
             key={item._id}
             projectData={item}

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import axios from '../../config/axiosConfig';
 
 export const useProjectForm = () => {
-  const [projectData, setProjectData] = useState([]);
+  const [projectData, setProjectData] = useState([]); // Inicializando como um array vazio
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeIcon, setActiveIcon] = useState(null);
@@ -68,14 +68,12 @@ export const useProjectForm = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        setProjectData(projectData.map(item => (item._id === editId ? response.data : item)));
       } else {
         const response = await axios.post('/projects', data, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
-        setProjectData([...projectData, response.data]);
       }
       setShowForm(false);
       setEditMode(false);
@@ -88,6 +86,7 @@ export const useProjectForm = () => {
         technologies: [],
         github: ''
       });
+      handleRefresh();
     } catch (error) {
       console.error('There was an error saving the data!', error);
       setError('Error saving data');
@@ -146,8 +145,7 @@ export const useProjectForm = () => {
       if (Array.isArray(response.data)) {
         setProjectData(response.data);
       } else {
-        console.error('Response data is not an array:', response.data);
-        setError('Unexpected response format');
+        setProjectData([]);
       }
       setLoading(false);
     } catch (error) {

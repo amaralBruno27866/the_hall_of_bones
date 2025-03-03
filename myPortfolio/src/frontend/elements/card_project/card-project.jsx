@@ -20,7 +20,7 @@ export function CardProject({ projectData, handleIconClick, activeIcon }) {
         <hr />
         <h4>Technologies</h4>
         <ul className={styles.list}>
-          {projectData.technologies.map((technology, index) => (
+          {Array.isArray(projectData.technologies) && projectData.technologies.map((technology, index) => (
             <li key={index}>{technology}</li>
           ))}
         </ul>
