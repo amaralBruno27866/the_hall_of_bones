@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from '../../config/axiosConfig';
 
 export const useProjectForm = () => {
-  const [projectData, setProjectData] = useState([]); // Inicializando como um array vazio
+  const [projectData, setProjectData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeIcon, setActiveIcon] = useState(null);

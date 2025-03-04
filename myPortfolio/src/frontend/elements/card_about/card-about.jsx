@@ -1,8 +1,12 @@
-import React from 'react';
+import React from "react";
 import styles from './card-about.module.css';
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
 export function CardAbout({ aboutData, handleIconClick, activeIcon }) {
+  if (!aboutData) {
+    return null;
+  }
+
   return (
     <section className={styles.about}>
       <div className={styles.container}>
@@ -11,18 +15,17 @@ export function CardAbout({ aboutData, handleIconClick, activeIcon }) {
         </div>
         <h3 className={styles.title}>{aboutData.title}</h3>
         <p className={styles.text}>{aboutData.paragraph}</p>
-        <hr />
         <footer className={styles.footer}>
           <div className={styles.actions}>
             <BsFillPencilFill
               size={30}
-              className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === aboutData._id ? styles['icon-active'] : ''}`}
-              onClick={() => handleIconClick('pencil', aboutData._id)}
+              className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === projectData._id ? styles['icon-active'] : ''}`}
+              onClick={() => handleIconClick('pencil', projectData._id)}
             />
             <BsFillTrashFill
               size={30}
-              className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === aboutData._id ? styles['icon-active'] : ''}`}
-              onClick={() => handleIconClick('trash', aboutData._id)}
+              className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === projectData._id ? styles['icon-active'] : ''}`}
+              onClick={() => handleIconClick('trash', projectData._id)}
             />
           </div>
         </footer>

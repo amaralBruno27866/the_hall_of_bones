@@ -34,6 +34,25 @@
   margin: 0;
 }
 
+.container h5 {
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.container h4 {
+  margin: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.container a {
+  margin: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
+
 .image {
   height: 60%;
   border-radius: 0.8rem 0.8rem 0 0;
@@ -83,7 +102,7 @@
 }
 
 .icon-pencil:hover {
-  color: lightblue;
+  color: rgb(4, 62, 255);
 }
 
 .icon-trash {
@@ -92,5 +111,5 @@
 }
 
 .icon-trash:hover {
-  color: lightcoral;
+  color: rgb(231, 1, 1);
 }

@@ -83,7 +83,7 @@
 }
 
 .icon-pencil:hover {
-  color: lightblue;
+  color: rgb(4, 62, 255);
 }
 
 .icon-trash {
@@ -92,5 +92,5 @@
 }
 
 .icon-trash:hover {
-  color: lightcoral;
+  color: rgb(231, 1, 1);
 }

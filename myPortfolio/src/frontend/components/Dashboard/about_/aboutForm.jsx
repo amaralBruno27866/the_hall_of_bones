@@ -1,10 +1,10 @@
 import React from 'react';
 import { useAboutForm } from '../../../hooks/useAboutForm';
 import { CardAbout } from '../../../elements/card_about/card-about';
-import { AboutEditModal } from './aboutEditModal';
-import { AboutDeleteModal } from './aboutDeleteModal';
-import styles from '../../../styles/form.module.css';
+import { AboutEditModal } from '../about_/aboutEditModal';
+import { AboutDeleteModal } from '../about_/aboutDeleteModal';
 import { BsArrowRepeat } from "react-icons/bs";
+import styles from '../../../styles/form.module.css';
 
 export function AboutForm() {
   const {
@@ -18,7 +18,6 @@ export function AboutForm() {
     editMode,
     handleIconClick,
     handleInputChange,
-    handleFileChange,
     handleSave,
     handleCancel,
     handleDelete,
@@ -40,10 +39,10 @@ export function AboutForm() {
       <header className={styles.header}>
         <BsArrowRepeat size={30} className={styles.refreshIcon} onClick={handleRefresh} />
         <h2>About Section Form</h2>
-        <button onClick={() => setShowForm(true)}>Add a new content</button>
+        <button onClick={() => setShowForm(true)}>Add a new card</button>
       </header>
       <div className={styles.cardContainer}>
-        {aboutData.map((item) => (
+        {Array.isArray(aboutData) && aboutData.map((item) => (
           <CardAbout
             key={item._id}
             aboutData={item}
@@ -57,7 +56,6 @@ export function AboutForm() {
           newCard={newCard}
           editMode={editMode}
           handleInputChange={handleInputChange}
-          handleFileChange={handleFileChange}
           handleSave={handleSave}
           handleCancel={handleCancel}
         />

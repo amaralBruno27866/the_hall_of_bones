@@ -35,45 +35,6 @@ export const useAboutForm = () => {
     }
   };
 
-  const handleDocumentClick = (event) => {
-    if (!event.target.closest('.icon')) {
-      setActiveIcon(null);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
-    return () => {
-      document.removeEventListener('click', handleDocumentClick);
-    };
-  }, []);
-
-  const fetchData = async () => {
-    const token = localStorage.getItem('token');
-    try {
-      const response = await axios.get('/about/cards', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      if (Array.isArray(response.data)) {
-        setAboutData(response.data);
-      } else {
-        console.error('Response data is not an array:', response.data);
-        setError('Unexpected response format');
-      }
-      setLoading(false);
-    } catch (error) {
-      console.error('There was an error fetching the data!', error);
-      setError('Error fetching data');
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewCard({ ...newCard, [name]: value });
@@ -95,7 +56,7 @@ export const useAboutForm = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        setAboutData(aboutData.map(item => (item._id === editId ? response.data : item)));
+        setAboutData(aboutData.map(item => (item._id === editId ? response.data : item))); // Atualizar o estado com o novo dado
       } else {
         const response = await axios.post('/about/cards', data, {
           headers: {
@@ -103,6 +64,7 @@ export const useAboutForm = () => {
           }
         });
         setAboutData([...aboutData, response.data]);
+        handleRefresh();
       }
       setShowForm(false);
       setEditMode(false);
@@ -112,6 +74,7 @@ export const useAboutForm = () => {
         title: '',
         paragraph: ''
       });
+      handleRefresh();
     } catch (error) {
       console.error('There was an error saving the data!', error);
       setError('Error saving data');
@@ -155,6 +118,32 @@ export const useAboutForm = () => {
     setLoading(true);
     fetchData();
   };
+
+  const fetchData = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get('/about/cards', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (Array.isArray(response.data)) {
+        setAboutData(response.data);
+      } else {
+        console.error('Response data is not an array:', response.data);
+        setError('Unexpected response format');
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error('There was an error fetching the data!', error);
+      setError('Error fetching data');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return {
     aboutData,
