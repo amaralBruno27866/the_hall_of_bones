@@ -113,6 +113,10 @@ export const useEducationForm = () => {
     setNewCard({ ...newCard, [name]: value });
   };
 
+  const handleSkillChange = (skill) => {
+    setNewCard({ ...newCard, skill });
+  };
+
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -228,6 +232,7 @@ export const useEducationForm = () => {
     editMode,
     handleIconClick,
     handleInputChange,
+    handleSkillChange,
     handleSave,
     handleCancel,
     handleDelete,

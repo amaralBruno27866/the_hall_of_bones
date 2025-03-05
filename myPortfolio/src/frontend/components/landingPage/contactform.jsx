@@ -100,7 +100,7 @@ export function ContactForm() {
               type="text"
               className={`form-control ${errors.name ? 'is-invalid' : ''}`}
               id="name"
-              placeholder="Your Name"
+              placeholder="Full Name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -113,7 +113,7 @@ export function ContactForm() {
               type="email"
               className={`form-control ${errors.email ? 'is-invalid' : ''}`}
               id="email"
-              placeholder="Your Email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -126,7 +126,7 @@ export function ContactForm() {
               type="tel"
               className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
               id="phone"
-              placeholder="Your Phone Number"
+              placeholder="Phone Number"
               value={formData.phone}
               onChange={handleChange}
               required

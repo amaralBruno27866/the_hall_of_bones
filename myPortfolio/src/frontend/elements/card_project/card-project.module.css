@@ -49,8 +49,13 @@
 .container a {
   margin: 0.5rem;
   font-size: 1rem;
-  color: #333;
+  color: #333333;
   text-align: center;
+  transition: ease 0.3s;
+}
+
+.container a:hover {
+  color: #3700fd;
 }
 
 .image {
@@ -76,7 +81,7 @@
   flex-grow: 1;
   font-size: 1rem;
   color: #333;
-  height: calc(30% - 1rem); /* Adjusting for margins */
+  height: calc(30% - 1rem);
 }
 
 .footer {

@@ -19,13 +19,13 @@ export function CardAbout({ aboutData, handleIconClick, activeIcon }) {
           <div className={styles.actions}>
             <BsFillPencilFill
               size={30}
-              className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === projectData._id ? styles['icon-active'] : ''}`}
-              onClick={() => handleIconClick('pencil', projectData._id)}
+              className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === aboutData._id ? styles['icon-active'] : ''}`}
+              onClick={() => handleIconClick('pencil', aboutData._id)}
             />
             <BsFillTrashFill
               size={30}
-              className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === projectData._id ? styles['icon-active'] : ''}`}
-              onClick={() => handleIconClick('trash', projectData._id)}
+              className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === aboutData._id ? styles['icon-active'] : ''}`}
+              onClick={() => handleIconClick('trash', aboutData._id)}
             />
           </div>
         </footer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEducationForm } from '../../../hooks/useEducationForm';
-import { EducationTable } from './educationTable';
+import { CardEducation } from '../../../elements/card_education/card-education';
 import { EducationEditModal } from './educationEditModal';
 import { EducationDeleteModal } from './educationDeleteModal';
 import styles from '../../../styles/form.module.css';
@@ -18,6 +18,7 @@ export function EducationForm() {
     editMode,
     handleIconClick,
     handleInputChange,
+    handleSkillChange,
     handleSave,
     handleCancel,
     handleDelete,
@@ -41,12 +42,22 @@ export function EducationForm() {
         <h2>Education Section Form</h2>
         <button onClick={() => setShowForm(true)}>Add a new content</button>
       </header>
-      <EducationTable educationData={educationData} handleIconClick={handleIconClick} activeIcon={activeIcon} />
+      <div className={styles.cardContainer}>
+        {Array.isArray(educationData) && educationData.map((item) => (
+          <CardEducation
+            key={item._id}
+            educationData={item}
+            handleIconClick={handleIconClick}
+            activeIcon={activeIcon}
+          />
+        ))}
+      </div>
       {showForm && (
         <EducationEditModal
           newCard={newCard}
           editMode={editMode}
           handleInputChange={handleInputChange}
+          handleSkillChange={handleSkillChange}
           handleSave={handleSave}
           handleCancel={handleCancel}
         />
