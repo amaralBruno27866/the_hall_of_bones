@@ -31,7 +31,7 @@ const educationSchema = new mongoose.Schema({
     type: Location.schema,
     required: true,
   },
-  skill: {
+  skills: {
     type: [String],
     required: true,
   }

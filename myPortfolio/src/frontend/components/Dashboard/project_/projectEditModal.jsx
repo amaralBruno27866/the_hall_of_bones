@@ -74,7 +74,8 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
                 type="button" 
                 className={styles.addButton} 
                 onClick={handleAddTechnology}>
-                  <BsFileEarmarkPlusFill />
+                  <BsFileEarmarkPlusFill 
+                />
               </button>
             </div>
             <div className={styles.technologyList}>

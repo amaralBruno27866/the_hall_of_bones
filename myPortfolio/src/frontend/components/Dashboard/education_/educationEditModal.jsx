@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsPlus } from "react-icons/bs";
 import styles from '../../../styles/education-form.module.css';
 
-export function EducationEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel }) {
+export function EducationEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel, handleSkillChange }) {
   const [skillInput, setSkillInput] = useState('');
   const [skills, setSkills] = useState(newCard.skills || []);
 
+  useEffect(() => {
+    setSkills(newCard.skills || []);
+  }, [newCard.skills]);
+
   const handleAddSkill = () => {
-    if (skillInput.trim() && skills.length < 7) {
-      setSkills([...skills, skillInput.trim()]);
+    if (skillInput.trim()) {
+      const updatedSkills = [...skills, skillInput.trim()];
+      setSkills(updatedSkills);
+      handleSkillChange(updatedSkills);
       setSkillInput('');
     }
   };
 
-  const handleSkillInputChange = (e) => {
-    setSkillInput(e.target.value);
+  const handleRemoveSkill = (index) => {
+    const updatedSkills = skills.filter((_, i) => i !== index);
+    setSkills(updatedSkills);
+    handleSkillChange(updatedSkills);
   };
+
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  const years = [];
+  for (let i = new Date().getFullYear(); i >= 1900; i--) {
+    years.push(i);
+  }
 
   return (
     <div className={styles.overlay}>
@@ -76,44 +94,54 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
 
           {/* Period */}
           <div className="form-group">
-            <label>Start Month</label>
-            <input
-              type="number"
-              className="form-control"
-              name="start_month"
-              value={newCard.period.start_month}
-              onChange={handleInputChange}
-            />
+            <label>Start Date</label>
+            <div className={styles.dateGroup}>
+              <select
+                className="form-control"
+                name="period.start_month"
+                value={newCard.period.start_month}
+                onChange={handleInputChange}
+              >
+                {months.map((month, index) => (
+                  <option key={index} value={index + 1}>{month}</option>
+                ))}
+              </select>
+              <select
+                className="form-control"
+                name="period.start_year"
+                value={newCard.period.start_year}
+                onChange={handleInputChange}
+              >
+                {years.map((year, index) => (
+                  <option key={index} value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
           </div>
           <div className="form-group">
-            <label>Start Year</label>
-            <input
-              type="number"
-              className="form-control"
-              name="start_year"
-              value={newCard.period.start_year}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>End Month</label>
-            <input
-              type="number"
-              className="form-control"
-              name="end_month"
-              value={newCard.period.end_month}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>End Year</label>
-            <input
-              type="number"
-              className="form-control"
-              name="end_year"
-              value={newCard.period.end_year}
-              onChange={handleInputChange}
-            />
+            <label>End Date</label>
+            <div className={styles.dateGroup}>
+              <select
+                className="form-control"
+                name="period.end_month"
+                value={newCard.period.end_month}
+                onChange={handleInputChange}
+              >
+                {months.map((month, index) => (
+                  <option key={index} value={index + 1}>{month}</option>
+                ))}
+              </select>
+              <select
+                className="form-control"
+                name="period.end_year"
+                value={newCard.period.end_year}
+                onChange={handleInputChange}
+              >
+                {years.map((year, index) => (
+                  <option key={index} value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           {/* Address */}
@@ -122,7 +150,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="number"
               className="form-control"
-              name="number"
+              name="address.number"
               value={newCard.address.number}
               onChange={handleInputChange}
             />
@@ -132,7 +160,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="text"
               className="form-control"
-              name="street"
+              name="address.street"
               value={newCard.address.street}
               onChange={handleInputChange}
             />
@@ -142,7 +170,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="text"
               className="form-control"
-              name="city"
+              name="address.city"
               value={newCard.address.city}
               onChange={handleInputChange}
             />
@@ -152,7 +180,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="text"
               className="form-control"
-              name="state"
+              name="address.state"
               value={newCard.address.state}
               onChange={handleInputChange}
             />
@@ -162,7 +190,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="text"
               className="form-control"
-              name="zip"
+              name="address.zip"
               value={newCard.address.zip}
               onChange={handleInputChange}
             />
@@ -172,7 +200,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             <input
               type="text"
               className="form-control"
-              name="country"
+              name="address.country"
               value={newCard.address.country}
               onChange={handleInputChange}
             />
@@ -186,15 +214,21 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
                 type="text"
                 className="form-control"
                 value={skillInput}
-                onChange={handleSkillInputChange}
+                onChange={(e) => setSkillInput(e.target.value)}
               />
-              <button type="button" className={styles.addSkillButton} onClick={handleAddSkill}>
+              <button 
+                type="button" 
+                className={styles.addSkillButton} 
+                onClick={handleAddSkill}>
                 <BsPlus size={20} />
               </button>
             </div>
             <div className={styles.skillsList}>
               {skills.map((skill, index) => (
-                <p key={index} className={styles.skillItem}>{skill}</p>
+                <div key={index} className={styles.skillItem}>
+                  {skill}
+                  <button type="button" className={styles.removeSkillButton} onClick={() => handleRemoveSkill(index)}>x</button>
+                </div>
               ))}
             </div>
           </div>

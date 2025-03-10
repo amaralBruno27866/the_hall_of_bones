@@ -19,7 +19,7 @@ export const useEducationForm = () => {
       start_month: '',
       start_year: '',
       end_month: '',
-      end_year: ''
+      end_year: '',
     },
     address: {
       number: '',
@@ -27,9 +27,9 @@ export const useEducationForm = () => {
       city: '',
       state: '',
       zip: '',
-      country: ''
+      country: '',
     },
-    skill: []
+    skills: [],
   });
   const [editMode, setEditMode] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -48,7 +48,7 @@ export const useEducationForm = () => {
           start_month: item.period.start_month,
           start_year: item.period.start_year,
           end_month: item.period.end_month,
-          end_year: item.period.end_year
+          end_year: item.period.end_year,
         },
         address: {
           number: item.address.number,
@@ -56,9 +56,9 @@ export const useEducationForm = () => {
           city: item.address.city,
           state: item.address.state,
           zip: item.address.zip,
-          country: item.address.country
+          country: item.address.country,
         },
-        skill: item.skill
+        skills: item.skills,
       });
       setEditMode(true);
       setEditId(id);
@@ -69,66 +69,55 @@ export const useEducationForm = () => {
     }
   };
 
-  const handleDocumentClick = (event) => {
-    if (!event.target.closest('.icon')) {
-      setActiveIcon(null);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
-    return () => {
-      document.removeEventListener('click', handleDocumentClick);
-    };
-  }, []);
-
-  const fetchData = async () => {
-    const token = localStorage.getItem('token');
-    try {
-      const response = await axios.get('/educations', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      if (Array.isArray(response.data)) {
-        setEducationData(response.data);
-      } else {
-        console.error('Response data is not an array:', response.data);
-        setError('Unexpected response format');
-      }
-      setLoading(false);
-    } catch (error) {
-      console.error('There was an error fetching the data!', error);
-      setError('Error fetching data');
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewCard({ ...newCard, [name]: value });
+    const [parent, child] = name.split('.');
+    if (child) {
+      setNewCard({ ...newCard, [parent]: { ...newCard[parent], [child]: value } });
+    } else {
+      setNewCard({ ...newCard, [name]: value });
+    }
   };
 
-  const handleSkillChange = (skill) => {
-    setNewCard({ ...newCard, skill });
+  const handleSkillChange = (skills) => {
+    setNewCard({ ...newCard, skills });
   };
 
   const handleSave = async () => {
     const token = localStorage.getItem('token');
+    const data = {
+      institution: newCard.institution,
+      image: newCard.image,
+      url: newCard.url,
+      field: newCard.field,
+      degree: newCard.degree,
+      period: {
+        start_month: newCard.period.start_month,
+        start_year: newCard.period.start_year,
+        end_month: newCard.period.end_month,
+        end_year: newCard.period.end_year,
+      },
+      address: {
+        number: newCard.address.number,
+        street: newCard.address.street,
+        city: newCard.address.city,
+        state: newCard.address.state,
+        zip: newCard.address.zip,
+        country: newCard.address.country,
+      },
+      skills: newCard.skills,
+    };
+
     try {
       if (editMode) {
-        const response = await axios.put(`/educations/${editId}`, newCard, {
+        const response = await axios.put(`/educations/${editId}`, data, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
-        setEducationData(educationData.map(item => item._id === editId ? response.data : item));
+        setEducationData(educationData.map(item => (item._id === editId ? response.data : item)));
       } else {
-        const response = await axios.post('/educations', newCard, {
+        const response = await axios.post('/educations', data, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -148,7 +137,7 @@ export const useEducationForm = () => {
           start_month: '',
           start_year: '',
           end_month: '',
-          end_year: ''
+          end_year: '',
         },
         address: {
           number: '',
@@ -156,10 +145,11 @@ export const useEducationForm = () => {
           city: '',
           state: '',
           zip: '',
-          country: ''
+          country: '',
         },
-        skill: []
+        skills: [],
       });
+      handleRefresh();
     } catch (error) {
       console.error('There was an error saving the data!', error);
       setError('Error saving data');
@@ -180,7 +170,7 @@ export const useEducationForm = () => {
         start_month: '',
         start_year: '',
         end_month: '',
-        end_year: ''
+        end_year: '',
       },
       address: {
         number: '',
@@ -188,9 +178,9 @@ export const useEducationForm = () => {
         city: '',
         state: '',
         zip: '',
-        country: ''
+        country: '',
       },
-      skill: []
+      skills: [],
     });
   };
 
@@ -220,6 +210,31 @@ export const useEducationForm = () => {
     setLoading(true);
     fetchData();
   };
+
+  const fetchData = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get('/educations', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (Array.isArray(response.data)) {
+        setEducationData(response.data);
+      } else {
+        setEducationData([]);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error('There was an error fetching the data!', error);
+      setError('Error fetching data');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return {
     educationData,

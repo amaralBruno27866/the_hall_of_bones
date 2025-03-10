@@ -3,13 +3,13 @@ import { recordTransaction } from '../utils.js';
 
 // This function will create a new education entry in the database
 export const createEducation = async (req, res) => {
-  const { institution, image, url, field, degree, period, address, skill } = req.body;
+  const { institution, image, url, field, degree, period, address, skills } = req.body;
 
   try {
-    const education = new Education({ institution, image, url, field, degree, period, address, skill });
+    const education = new Education({ institution, image, url, field, degree, period, address, skills });
     await education.save();
 
-    await recordTransaction(req.user, 'create', 'education', { institution, image, url, field, degree, period, address, skill });
+    await recordTransaction(req.user, 'create', 'education', { institution, image, url, field, degree, period, address, skills });
 
     console.log('Education entry created successfully', education);
     res.status(201).json({ message: 'Education entry created successfully' });
@@ -34,7 +34,7 @@ export const getEducations = async (req, res) => {
 // This function will update an education entry
 export const updateEducation = async (req, res) => {
   const { id } = req.params;
-  const { institution, image, url, field, degree, period, address, skill } = req.body;
+  const { institution, image, url, field, degree, period, address, skills } = req.body;
 
   try {
     const education = await Education.findById(id);
@@ -42,7 +42,7 @@ export const updateEducation = async (req, res) => {
       return res.status(404).json({ message: 'Education entry not found' });
     }
 
-    const oldDetails = { institution: education.institution, image: education.image, url: education.url, field: education.field, degree: education.degree, period: education.period, address: education.address, skill: education.skill };
+    const oldDetails = { institution: education.institution, image: education.image, url: education.url, field: education.field, degree: education.degree, period: education.period, address: education.address, skills: education.skills };
     education.institution = institution || education.institution;
     education.image = image || education.image;
     education.url = url || education.url;
@@ -50,11 +50,11 @@ export const updateEducation = async (req, res) => {
     education.degree = degree || education.degree;
     education.period = period || education.period;
     education.address = address || education.address;
-    education.skill = skill || education.skill;
+    education.skills = skills || education.skills;
 
     await education.save();
 
-    await recordTransaction(req.user, 'update', 'education', { old: oldDetails, new: { institution, image, url, field, degree, period, address, skill } });
+    await recordTransaction(req.user, 'update', 'education', { old: oldDetails, new: { institution, image, url, field, degree, period, address, skills } });
 
     console.log('Education entry updated successfully', education);
     res.status(200).json({ message: 'Education entry updated successfully' });
@@ -74,7 +74,7 @@ export const deleteEducation = async (req, res) => {
       return res.status(404).json({ message: 'Education entry not found' });
     }
 
-    await recordTransaction(req.user, 'delete', 'education', { institution: education.institution, image: education.image, url: education.url, field: education.field, degree: education.degree, period: education.period, address: education.address, skill: education.skill });
+    await recordTransaction(req.user, 'delete', 'education', { institution: education.institution, image: education.image, url: education.url, field: education.field, degree: education.degree, period: education.period, address: education.address, skills: education.skills });
 
     console.log('Education entry deleted successfully', education);
     res.status(200).json({ message: 'Education entry deleted successfully' });
