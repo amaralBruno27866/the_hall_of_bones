@@ -8,31 +8,24 @@ export function CardEducation({ educationData, handleIconClick, activeIcon }) {
   }
 
   return (
-    <main>
-      <figure>
-        <img src="https://via.placeholder.com/150" alt="Institution picture" />
-      </figure>
-      <article>
-        <div>
-          <h1>Institution</h1>
-          <p>Field</p>
-          <p>Degree</p>
-          <p>Start date</p>
-          <p>End date</p>
-          <p>Address</p>
+    <main className={styles.education}>
+      <article className={styles.container}>
+        <h1 className={styles.title}>{educationData.institution}</h1>
+        <div className={styles.text}>
+          <p>{educationData.field}</p>
+          <p>{educationData.degree}</p>
+          <p>{educationData.period.start_month} {educationData.period.start_year} - {educationData.period.end_month} {educationData.period.end_year}</p>
+          <p>{educationData.address.street}, {educationData.address.city}, {educationData.address.state}, {educationData.address.country}</p>
         </div>
-        <hr />
-        <div>
+        <div className={styles.skills}>
           <h4>Skills</h4>
-          <p>skill</p>
-          <p>skill</p>
-          <p>skill</p>
-          <p>skill</p>
-          <p>skill</p>
+          {educationData.skills.map((skill, index) => (
+            <p key={index}>{skill}</p>
+          ))}
         </div>
       </article>
-      <button>
-        Link to website
+      <button className={styles.link}>
+        <a href={educationData.url} target="_blank" rel="noopener noreferrer">Link to website</a>
       </button>
       <section className={styles.footer}>
         <div className={styles.actions}>
@@ -49,5 +42,5 @@ export function CardEducation({ educationData, handleIconClick, activeIcon }) {
         </div>
       </section>
     </main>
-  )
+  );
 }

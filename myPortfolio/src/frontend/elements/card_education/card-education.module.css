@@ -1,0 +1,73 @@
+.education {
+  background-image: url('../../../assets/images/Seneca-4.png');
+  background-size: cover;
+  background-position: center;
+  width: 60rem;
+  height: 30rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 1rem;
+}
+
+.container {
+  display: contents; /* Permite que os filhos do container sigam o grid do pai */
+}
+
+.title {
+  background-color: salmon;
+  grid-column: 1 / -1; /* Ocupa ambas as colunas */
+  grid-row: 1; /* Primeira linha */
+}
+
+.text {
+  background-color: seagreen;
+  grid-column: 1; /* Primeira coluna */
+  grid-row: 2; /* Segunda linha */
+}
+
+.skills {
+  background-color: springgreen;
+  grid-column: 2; /* Segunda coluna */
+  grid-row: 2; /* Segunda linha */
+}
+
+.link {
+  background-color: tomato;
+  grid-column: 1 / -1; /* Ocupa ambas as colunas */
+  grid-row: 3; /* Terceira linha */
+}
+
+.footer {
+  grid-column: 1 / -1; /* Ocupa ambas as colunas */
+  grid-row: 4; /* Quarta linha */
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon-pencil {
+  color: darkblue;
+  transition: ease 0.3s;
+}
+
+.icon-pencil:hover {
+  color: rgb(4, 62, 255);
+}
+
+.icon-trash {
+  color: darkred;
+  transition: ease 0.3s;
+}
+
+.icon-trash:hover {
+  color: rgb(231, 1, 1);
+}
