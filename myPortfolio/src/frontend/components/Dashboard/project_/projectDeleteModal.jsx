@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../../styles/form.module.css';
 
+// ProjectDeleteModal component to confirm deletion of a project card
 export function ProjectDeleteModal({ handleDelete, handleCancelDelete }) {
   return (
     <div className={styles.overlay}>

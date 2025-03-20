@@ -6,25 +6,35 @@ import logo from '../../../assets/images/my_logo.png';
 import axios from '../../../config/axiosConfig';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
+// Login component to handle user login
 export function Login() {
+  // State to store email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // State to manage password visibility
   const [showPassword, setShowPassword] = useState(false);
+  // State to manage error messages
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', { email, password }); // Atualizar a URL aqui
+      // Send login request to the API
+      const response = await axios.post('/login', { email, password });
       const { token } = response.data;
-      localStorage.setItem('token', token); // Armazenar o token no localStorage
-      navigate('/dashboard'); // Redirecionar para o dashboard
+      // Store the token in localStorage
+      localStorage.setItem('token', token);
+      // Redirect to the dashboard
+      navigate('/dashboard');
     } catch (error) {
+      // Set error message if login fails
       setError('Invalid email or password');
     }
   };
 
+  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Define the schema for the Term
 const termSchema = new mongoose.Schema({
   start_month: {
     type: Number,
@@ -30,8 +31,9 @@ const termSchema = new mongoose.Schema({
     type: String,
     default: 'term',
   }
-}, { timestamps: true });
+}, { timestamps: true }); // Automatically add createdAt and updatedAt timestamps
 
+// Pre-save hook to calculate the total time
 termSchema.pre('save', function (next) {
   const startDate = new Date(this.start_year, this.start_month - 1);
   const endDate = new Date(this.end_year, this.end_month - 1);
@@ -43,6 +45,7 @@ termSchema.pre('save', function (next) {
   next();
 });
 
+// Create the Term model using the schema
 const Term = mongoose.model('Term', termSchema);
 
 export default Term;

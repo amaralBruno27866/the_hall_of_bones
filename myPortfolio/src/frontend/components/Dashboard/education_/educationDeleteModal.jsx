@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../../styles/education-form.module.css';
 
+// EducationDeleteModal component to confirm deletion of an education entry
 export function EducationDeleteModal({ handleDelete, handleCancelDelete }) {
   return (
     <div className={styles.overlay}>
@@ -15,5 +16,5 @@ export function EducationDeleteModal({ handleDelete, handleCancelDelete }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { BsPlus } from "react-icons/bs";
 import styles from '../../../styles/education-form.module.css';
 
+// EducationEditModal component to add or edit an education entry
 export function EducationEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel, handleSkillChange }) {
+  // State to manage the input for a new skill
   const [skillInput, setSkillInput] = useState('');
+  // State to manage the list of skills
   const [skills, setSkills] = useState(newCard.skills || []);
 
+  // Update the skills state when newCard.skills changes
   useEffect(() => {
     setSkills(newCard.skills || []);
   }, [newCard.skills]);
 
+  // Function to handle adding a new skill
   const handleAddSkill = () => {
     if (skillInput.trim()) {
       const updatedSkills = [...skills, skillInput.trim()];
@@ -19,17 +24,20 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
     }
   };
 
+  // Function to handle removing a skill
   const handleRemoveSkill = (index) => {
     const updatedSkills = skills.filter((_, i) => i !== index);
     setSkills(updatedSkills);
     handleSkillChange(updatedSkills);
   };
 
+  // Array of months for the date selectors
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
+  // Array of years for the date selectors
   const years = [];
   for (let i = new Date().getFullYear(); i >= 1900; i--) {
     years.push(i);

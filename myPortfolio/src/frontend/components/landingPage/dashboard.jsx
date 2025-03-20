@@ -8,10 +8,13 @@ import styles from '../../styles/dashboard.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import axios from '../../../config/axiosConfig';
 
+// Dashboard component to manage the admin dashboard
 export function Dashboard() {
+  // State to manage the active link in the sidebar
   const [activeLink, setActiveLink] = useState('Home');
   const navigate = useNavigate();
 
+  // useEffect hook to check for authentication token on component mount
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -19,10 +22,12 @@ export function Dashboard() {
     }
   }, [navigate]);
 
+  // Function to handle sidebar link clicks
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
 
+  // Function to handle user logout
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -38,6 +43,7 @@ export function Dashboard() {
     }
   };
 
+  // Function to render the content based on the active link
   const renderContent = () => {
     switch (activeLink) {
       case 'About':

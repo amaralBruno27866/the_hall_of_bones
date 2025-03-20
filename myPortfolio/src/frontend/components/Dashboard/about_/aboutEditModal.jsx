@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../../styles/form.module.css';
 
+// AboutEditModal component to add or edit an about card
 export function AboutEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel }) {
   return (
     <div className={styles.overlay}>

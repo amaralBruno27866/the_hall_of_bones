@@ -1,22 +1,34 @@
 import { useState, useEffect } from 'react';
 import axios from '../../config/axiosConfig';
 
+// Custom hook to manage the About section form
 export const useAboutForm = () => {
+  // State to store about cards data
   const [aboutData, setAboutData] = useState([]);
+  // State to manage loading status
   const [loading, setLoading] = useState(true);
+  // State to manage error messages
   const [error, setError] = useState(null);
+  // State to manage the active icon for edit/delete
   const [activeIcon, setActiveIcon] = useState(null);
+  // State to manage the visibility of the edit form
   const [showForm, setShowForm] = useState(false);
+  // State to manage the visibility of the delete modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // State to store the ID of the card to be deleted
   const [deleteId, setDeleteId] = useState(null);
+  // State to manage the new or edited card data
   const [newCard, setNewCard] = useState({
     image: '',
     title: '',
     paragraph: ''
   });
+  // State to manage whether the form is in edit mode
   const [editMode, setEditMode] = useState(false);
+  // State to store the ID of the card being edited
   const [editId, setEditId] = useState(null);
 
+  // Function to handle icon clicks (edit/delete)
   const handleIconClick = (icon, id) => {
     setActiveIcon({ icon, id });
     if (icon === 'pencil') {
@@ -35,11 +47,13 @@ export const useAboutForm = () => {
     }
   };
 
+  // Function to handle input changes in the form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewCard({ ...newCard, [name]: value });
   };
 
+  // Function to handle saving the form data
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     const data = {
@@ -81,6 +95,7 @@ export const useAboutForm = () => {
     }
   };
 
+  // Function to handle canceling the form
   const handleCancel = () => {
     setShowForm(false);
     setEditMode(false);
@@ -92,6 +107,7 @@ export const useAboutForm = () => {
     });
   };
 
+  // Function to handle deleting a card
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -109,16 +125,19 @@ export const useAboutForm = () => {
     }
   };
 
+  // Function to handle canceling the delete action
   const handleCancelDelete = () => {
     setShowDeleteModal(false);
     setDeleteId(null);
   };
 
+  // Function to handle refreshing the data
   const handleRefresh = () => {
     setLoading(true);
     fetchData();
   };
 
+  // Function to fetch data from the API
   const fetchData = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -141,6 +160,7 @@ export const useAboutForm = () => {
     }
   };
 
+  // Fetch data when the component mounts
   useEffect(() => {
     fetchData();
   }, []);

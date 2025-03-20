@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../../styles/form.module.css';
 
+// AboutDeleteModal component to confirm deletion of an about card
 export function AboutDeleteModal({ handleDelete, handleCancelDelete }) {
   return (
     <div className={styles.overlay}>

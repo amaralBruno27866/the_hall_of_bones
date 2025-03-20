@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import styles from '../../../styles/form.module.css';
 import { BsFileEarmarkPlusFill } from "react-icons/bs";
 
+// ProjectEditModal component to add or edit a project card
 export function ProjectEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel, handleTechnologiesChange }) {
+  // State to manage the input for a new technology
   const [technologyInput, setTechnologyInput] = useState('');
 
+  // Function to handle adding a new technology
   const handleAddTechnology = () => {
     if (technologyInput.trim()) {
       handleTechnologiesChange([...newCard.technologies, technologyInput.trim()]);
@@ -12,6 +15,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
     }
   };
 
+  // Function to handle removing a technology
   const handleRemoveTechnology = (index) => {
     const updatedTechnologies = newCard.technologies.filter((_, i) => i !== index);
     handleTechnologiesChange(updatedTechnologies);
@@ -22,6 +26,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
       <div className={styles.formContainer}>
         <h2>{editMode ? 'Edit Content' : 'Add New Content'}</h2>
         <form>
+          {/* Image URL input */}
           <div className="form-group">
             <label>Image URL</label>
             <input
@@ -32,6 +37,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
+          {/* Title input */}
           <div className="form-group">
             <label>Title</label>
             <input
@@ -42,6 +48,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
+          {/* Description input */}
           <div className="form-group">
             <label>Description</label>
             <textarea
@@ -51,6 +58,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
+          {/* Category input */}
           <div className="form-group">
             <label>Category</label>
             <input
@@ -61,6 +69,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
+          {/* Technologies input */}
           <div className="form-group">
             <label>Technologies</label>
             <div className={styles.technologyInputGroup}>
@@ -74,8 +83,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
                 type="button" 
                 className={styles.addButton} 
                 onClick={handleAddTechnology}>
-                  <BsFileEarmarkPlusFill 
-                />
+                <BsFileEarmarkPlusFill />
               </button>
             </div>
             <div className={styles.technologyList}>
@@ -87,6 +95,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               ))}
             </div>
           </div>
+          {/* GitHub URL input */}
           <div className="form-group">
             <label>GitHub URL</label>
             <input
@@ -97,6 +106,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
+          {/* Save and Cancel buttons */}
           <div className={styles.buttonGroup}>
             <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleSave}>Save</button>
             <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleCancel}>Cancel</button>

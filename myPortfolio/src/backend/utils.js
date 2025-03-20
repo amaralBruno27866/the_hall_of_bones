@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Transaction from './models/Transaction.js';
 
-// Função para validar o ID do usuário
+// Function to validate the user ID
 export const validateUserId = async (id) => {
   const user = await User.findById(id);
   if (!user) {
@@ -12,7 +12,7 @@ export const validateUserId = async (id) => {
   return user;
 };
 
-// Função para verificar se o email já existe
+// Function to check if the email already exists
 export const checkEmailExists = async (email) => {
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -20,12 +20,12 @@ export const checkEmailExists = async (email) => {
   }
 };
 
-// Função para gerar um token JWT
+// Function to generate a JWT token
 export const generateToken = (user) => {
   return jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '12h' });
 };
 
-// Função para verificar a senha
+// Function to verify the password
 export const verifyPassword = async (inputPassword, userPassword) => {
   const isMatch = await bcrypt.compare(inputPassword, userPassword);
   if (!isMatch) {
@@ -33,7 +33,7 @@ export const verifyPassword = async (inputPassword, userPassword) => {
   }
 };
 
-// Função para registrar uma transação
+// Function to record a transaction
 export const recordTransaction = async (user, action, entity, details) => {
   try {
     const transaction = new Transaction({

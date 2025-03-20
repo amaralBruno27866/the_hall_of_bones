@@ -4,7 +4,9 @@ import styles from '../../styles/contactform.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import form from '../../../assets/images/form.gif';
 
+// ContactForm component to handle the contact form submission
 export function ContactForm() {
+  // State to store the form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,10 +15,14 @@ export function ContactForm() {
     message: ''
   });
 
+  // State to manage form validation errors
   const [errors, setErrors] = useState({});
+  // State to manage the form submission state
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // State to manage the form submission success state
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  // Function to validate individual form fields
   const validateField = (name, value) => {
     switch (name) {
       case 'name':
@@ -44,6 +50,7 @@ export function ContactForm() {
     }
   };
 
+  // Function to validate the entire form
   const validate = () => {
     const errors = {};
     Object.keys(formData).forEach((key) => {
@@ -53,6 +60,7 @@ export function ContactForm() {
     return errors;
   };
 
+  // Function to handle form field changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -60,6 +68,7 @@ export function ContactForm() {
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();

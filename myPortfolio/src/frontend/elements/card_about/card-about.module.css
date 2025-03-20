@@ -57,7 +57,7 @@
   flex-grow: 1;
   font-size: 1rem;
   color: #333;
-  height: calc(30% - 1rem); /* Adjusting for margins */
+  height: calc(30% - 1rem);
 }
 
 .footer {
