@@ -14,7 +14,6 @@ import educationRoutes from './src/backend/routes/educationRoutes.js';
 import projectRoutes from './src/backend/routes/projectRoutes.js';
 import contactRoutes from './src/backend/routes/contactRoutes.js';
 
-// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
@@ -52,7 +51,6 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
