@@ -16,10 +16,10 @@ export function CardEducation({ educationData, handleIconClick, activeIcon }) {
         <h1 className={styles.title}>{educationData.institution}</h1>
         {/* Text section */}
         <div className={styles.text}>
-          <p>{educationData.field}</p>
-          <p>{educationData.degree}</p>
-          <p>{educationData.period.start_month} {educationData.period.start_year} - {educationData.period.end_month} {educationData.period.end_year}</p>
-          <p>{educationData.address.street}, {educationData.address.city}, {educationData.address.state}, {educationData.address.country}</p>
+          <p>Field<br />{educationData.field}</p>
+          <p>Degree<br />{educationData.degree}</p>
+          <p>Period<br />Start: {educationData.period.start_month} / {educationData.period.start_year} <br /> End: {educationData.period.end_month} / {educationData.period.end_year}</p>
+          <p>Address<br />{educationData.address.street}, {educationData.address.city}, {educationData.address.state}, {educationData.address.country}</p>
         </div>
         {/* Skills section */}
         <div className={styles.skills}>
@@ -30,26 +30,12 @@ export function CardEducation({ educationData, handleIconClick, activeIcon }) {
         </div>
       </article>
       {/* Link section */}
-      <button className={styles.link}>
-        <a href={educationData.url} target="_blank" rel="noopener noreferrer">Link to website</a>
+      <button
+        className={styles.link}
+        onClick={() => window.open(educationData.url, '_blank', 'noopener noreferrer')}
+      >
+        Link to website
       </button>
-      {/* Footer section with action icons */}
-      <section className={styles.footer}>
-        <div className={styles.actions}>
-          {/* Edit icon */}
-          <BsFillPencilFill
-            size={30}
-            className={`${styles.icon} ${styles['icon-pencil']} ${activeIcon?.icon === 'pencil' && activeIcon?.id === educationData._id ? styles['icon-active'] : ''}`}
-            onClick={() => handleIconClick('pencil', educationData._id)}
-          />
-          {/* Delete icon */}
-          <BsFillTrashFill
-            size={30}
-            className={`${styles.icon} ${styles['icon-trash']} ${activeIcon?.icon === 'trash' && activeIcon?.id === educationData._id ? styles['icon-active'] : ''}`}
-            onClick={() => handleIconClick('trash', educationData._id)}
-          />
-        </div>
-      </section>
     </main>
   );
 }

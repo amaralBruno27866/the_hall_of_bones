@@ -2,14 +2,15 @@
   background-image: url('../../../assets/images/Seneca-4.png');
   background-size: cover;
   background-position: center;
-  width: 60rem;
-  height: 30rem;
+  width: 81rem;
+  height: 45.5625rem;
   padding: 1rem;
   border-radius: 0.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr auto auto;
+  grid-template-columns: 1fr 1fr; /* Duas colunas */
+  grid-template-rows: auto 1fr auto auto; /* Quatro linhas */
   gap: 1rem;
+  overflow: hidden; /* Garante que nenhum conteúdo ultrapasse os limites do card */
 }
 
 .container {
@@ -17,27 +18,57 @@
 }
 
 .title {
-  background-color: salmon;
+  background-color: rgba(0, 0, 0, 0.150);
   grid-column: 1 / -1; /* Ocupa ambas as colunas */
   grid-row: 1; /* Primeira linha */
+  font-weight: 600;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .text {
-  background-color: seagreen;
+  background-color: rgba(0, 0, 0, 0.150);
   grid-column: 1; /* Primeira coluna */
   grid-row: 2; /* Segunda linha */
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .skills {
-  background-color: springgreen;
+  background-color: rgba(0, 0, 0, 0.150);
   grid-column: 2; /* Segunda coluna */
   grid-row: 2; /* Segunda linha */
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .link {
-  background-color: tomato;
   grid-column: 1 / -1; /* Ocupa ambas as colunas */
-  grid-row: 3; /* Terceira linha */
+  grid-row: 4; /* Última linha */
+  justify-self: center; /* Centraliza horizontalmente */
+  align-self: center; /* Centraliza verticalmente */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: fit-content; /* Garante que o botão ocupe apenas o espaço necessário */
+}
+
+.link:hover {
+  background-color: #0056b3;
 }
 
 .footer {
