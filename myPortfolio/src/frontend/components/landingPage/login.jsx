@@ -42,13 +42,16 @@ export function Login() {
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginCard}>
+        {/* Header with logo and title */}
         <header className={styles.header}>
           <Link to="/">
             <img src={logo} alt="Logo" className={styles.logo} />
           </Link>
           <h1>Dashboard Access</h1>
         </header>
+        {/* Login form */}
         <form onSubmit={handleSubmit}>
+          {/* Email input */}
           <div className="form-group">
             <label>Email</label>
             <input
@@ -59,6 +62,7 @@ export function Login() {
               required
             />
           </div>
+          {/* Password input with toggle visibility */}
           <div className="form-group">
             <label>Password</label>
             <div className={styles.passwordWrapper}>
@@ -74,11 +78,14 @@ export function Login() {
               </span>
             </div>
           </div>
+          {/* Error message */}
           {error && <p className={styles.error}>{error}</p>}
+          {/* Buttons for login and navigation */}
           <div className={styles.buttonGroup}>
             <button type="submit" className="btn btn-primary">Login</button>
             <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>Back to home</button>
           </div>
+          {/* Forgot password link */}
           <div className={styles.forgotPassword}>
             <Link to="/forgot-password">I forgot my password</Link>
           </div>

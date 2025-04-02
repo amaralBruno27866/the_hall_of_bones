@@ -2,12 +2,15 @@ import React from 'react';
 import styles from '../../styles/home.module.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+// Home component to display the landing page's main section
 export function Home() {
   return (
     <section id='home' className={`${styles.home} container`}>
       <div className="row align-items-center">
+        {/* Left column with text content */}
         <div className="col-md-6">
           <div className={styles.content}>
+            {/* Background video */}
             <video autoPlay loop muted className={styles.video}>
               <source src='./src/assets/video/codingLoop.mp4' type='video/mp4'/>
             </video>
@@ -22,6 +25,7 @@ export function Home() {
             <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
+        {/* Right column with an image */}
         <div className="col-md-6">
           <div className={styles.image}>
             <img src="./src/assets/images/programmer.png" alt="programmer" className="img-fluid" />
