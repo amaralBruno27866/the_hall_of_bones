@@ -31,24 +31,17 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
     handleSkillChange(updatedSkills);
   };
 
-  // Array of months for the date selectors
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-
-  // Array of years for the date selectors
-  const years = [];
-  for (let i = new Date().getFullYear(); i >= 1900; i--) {
-    years.push(i);
-  }
+  // Arrays for months and years for date selectors
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const years = Array.from({ length: new Date().getFullYear() - 1899 }, (_, i) => new Date().getFullYear() - i);
 
   return (
     <div className={styles.overlay}>
       <div className={styles.formContainer}>
+        {/* Title indicating whether the form is for editing or adding */}
         <h2>{editMode ? 'Edit Education' : 'Add New Education'}</h2>
         <form>
-          {/* Basic information */}
+          {/* Input fields for basic information */}
           <div className="form-group">
             <label>Institution</label>
             <input
@@ -100,7 +93,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             />
           </div>
 
-          {/* Period */}
+          {/* Period selectors for start and end dates */}
           <div className="form-group">
             <label>Start Date</label>
             <div className={styles.dateGroup}>
@@ -120,8 +113,8 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
                 value={newCard.period.start_year}
                 onChange={handleInputChange}
               >
-                {years.map((year, index) => (
-                  <option key={index} value={year}>{year}</option>
+                {years.map((year) => (
+                  <option key={year} value={year}>{year}</option>
                 ))}
               </select>
             </div>
@@ -145,14 +138,14 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
                 value={newCard.period.end_year}
                 onChange={handleInputChange}
               >
-                {years.map((year, index) => (
-                  <option key={index} value={year}>{year}</option>
+                {years.map((year) => (
+                  <option key={year} value={year}>{year}</option>
                 ))}
               </select>
             </div>
           </div>
 
-          {/* Address */}
+          {/* Input fields for address */}
           <div className="form-group">
             <label>Number</label>
             <input
@@ -214,7 +207,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             />
           </div>
 
-          {/* Skills */}
+          {/* Skills input and list */}
           <div className="form-group">
             <label>Skills</label>
             <div className={styles.skillsInput}>
@@ -241,6 +234,7 @@ export function EducationEditModal({ newCard, editMode, handleInputChange, handl
             </div>
           </div>
 
+          {/* Buttons for saving or canceling */}
           <div className={styles.buttonGroup}>
             <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleSave}>Save</button>
             <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleCancel}>Cancel</button>
