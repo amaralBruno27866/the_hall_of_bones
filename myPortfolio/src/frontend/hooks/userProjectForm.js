@@ -31,7 +31,11 @@ export const useProjectForm = () => {
   // State to store the ID of the card being edited
   const [editId, setEditId] = useState(null);
 
-  // Function to handle icon clicks (edit/delete)
+  /**
+   * Objective: Handle icon clicks for edit or delete actions.
+   * Functionality: Sets the active icon and manages the state for edit or delete actions.
+   * Expected Result: Opens the edit form or delete modal based on the clicked icon.
+   */
   const handleIconClick = (icon, id) => {
     setActiveIcon({ icon, id });
     if (icon === 'pencil') {
@@ -53,18 +57,30 @@ export const useProjectForm = () => {
     }
   };
 
-  // Function to handle input changes in the form
+  /**
+   * Objective: Handle input changes in the form.
+   * Functionality: Updates the state with the new input values.
+   * Expected Result: Reflects the updated input values in the form state.
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewCard({ ...newCard, [name]: value });
   };
 
-  // Function to handle technology changes in the form
+  /**
+   * Objective: Handle technology changes in the form.
+   * Functionality: Updates the state with the new list of technologies.
+   * Expected Result: Reflects the updated technologies in the form state.
+   */
   const handleTechnologiesChange = (technologies) => {
     setNewCard({ ...newCard, technologies });
   };
 
-  // Function to handle saving the form data
+  /**
+   * Objective: Save the form data (new or edited card).
+   * Functionality: Sends a POST or PUT request to save the data and updates the state.
+   * Expected Result: Adds a new card or updates an existing card in the project data.
+   */
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     const data = {
@@ -110,7 +126,11 @@ export const useProjectForm = () => {
     }
   };
 
-  // Function to handle canceling the form
+  /**
+   * Objective: Cancel the form action.
+   * Functionality: Resets the form state and hides the form.
+   * Expected Result: Closes the form and clears the form state.
+   */
   const handleCancel = () => {
     setShowForm(false);
     setEditMode(false);
@@ -125,7 +145,11 @@ export const useProjectForm = () => {
     });
   };
 
-  // Function to handle deleting a card
+  /**
+   * Objective: Delete a card.
+   * Functionality: Sends a DELETE request to remove the card and updates the state.
+   * Expected Result: Removes the card from the project data.
+   */
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -143,19 +167,31 @@ export const useProjectForm = () => {
     }
   };
 
-  // Function to handle canceling the delete action
+  /**
+   * Objective: Cancel the delete action.
+   * Functionality: Resets the delete state and hides the delete modal.
+   * Expected Result: Closes the delete modal and clears the delete state.
+   */
   const handleCancelDelete = () => {
     setShowDeleteModal(false);
     setDeleteId(null);
   };
 
-  // Function to handle refreshing the data
+  /**
+   * Objective: Refresh the data.
+   * Functionality: Sets the loading state and fetches the data again.
+   * Expected Result: Updates the project data with the latest data from the API.
+   */
   const handleRefresh = () => {
     setLoading(true);
     fetchData();
   };
 
-  // Function to fetch data from the API
+  /**
+   * Objective: Fetch data from the API.
+   * Functionality: Sends a GET request to retrieve project data and updates the state.
+   * Expected Result: Populates the project data state with the fetched data.
+   */
   const fetchData = async () => {
     const token = localStorage.getItem('token');
     try {
