@@ -1,3 +1,4 @@
+/* Main container for the project card */
 .project {
   width: 20rem;
   height: auto;
@@ -12,16 +13,19 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for the project card */
 .project:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Active state for the project card */
 .project.active {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Container for the card content */
 .container {
   height: 100%;
   border-radius: 0.8rem;
@@ -30,22 +34,26 @@
   justify-content: space-between;
 }
 
+/* Horizontal rule styling */
 .container hr {
   margin: 0;
 }
 
+/* Category title styling */
 .container h5 {
   margin: 0.5rem;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+/* Technologies title styling */
 .container h4 {
   margin: 0.5rem;
   font-size: 1rem;
   color: #333;
 }
 
+/* GitHub link styling */
 .container a {
   margin: 0.5rem;
   font-size: 1rem;
@@ -54,10 +62,12 @@
   transition: ease 0.3s;
 }
 
+/* Hover effect for GitHub link */
 .container a:hover {
   color: #3700fd;
 }
 
+/* Image section styling */
 .image {
   height: 60%;
   border-radius: 0.8rem 0.8rem 0 0;
@@ -70,12 +80,14 @@
   object-fit: cover;
 }
 
+/* Title section styling */
 .title {
   margin: 0.5rem;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+/* Description section styling */
 .text {
   margin: 0.5rem;
   flex-grow: 1;
@@ -84,6 +96,7 @@
   height: calc(30% - 1rem);
 }
 
+/* Footer section styling */
 .footer {
   height: 10%;
   margin: 0.5rem;
@@ -92,15 +105,18 @@
   align-items: center;
 }
 
+/* Action buttons container */
 .actions {
   display: flex;
   gap: 1rem;
 }
 
+/* Icon styling */
 .icon {
   cursor: pointer;
 }
 
+/* Edit icon styling */
 .icon-pencil {
   color: darkblue;
   transition: ease 0.3s;
@@ -110,6 +126,7 @@
   color: rgb(4, 62, 255);
 }
 
+/* Delete icon styling */
 .icon-trash {
   color: darkred;
   transition: ease 0.3s;
