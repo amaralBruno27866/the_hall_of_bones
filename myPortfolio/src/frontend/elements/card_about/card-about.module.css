@@ -1,3 +1,4 @@
+/* Main container for the about card */
 .about {
   width: 20rem;
   height: 35rem;
@@ -12,16 +13,19 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for the about card */
 .about:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Active state for the about card */
 .about.active {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Container for the card content */
 .container {
   height: 100%;
   border-radius: 0.8rem;
@@ -30,10 +34,12 @@
   justify-content: space-between;
 }
 
+/* Horizontal rule styling */
 .container hr {
   margin: 0;
 }
 
+/* Image section styling */
 .image {
   height: 60%;
   border-radius: 0.8rem 0.8rem 0 0;
@@ -46,12 +52,14 @@
   object-fit: cover;
 }
 
+/* Title section styling */
 .title {
   margin: 0.5rem;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+/* Text section styling */
 .text {
   margin: 0.5rem;
   flex-grow: 1;
@@ -60,6 +68,7 @@
   height: calc(30% - 1rem);
 }
 
+/* Footer section styling */
 .footer {
   height: 10%;
   margin: 0.5rem;
@@ -68,15 +77,18 @@
   align-items: center;
 }
 
+/* Action buttons container */
 .actions {
   display: flex;
   gap: 1rem;
 }
 
+/* Icon styling */
 .icon {
   cursor: pointer;
 }
 
+/* Edit icon styling */
 .icon-pencil {
   color: darkblue;
   transition: ease 0.3s;
@@ -86,6 +98,7 @@
   color: rgb(4, 62, 255);
 }
 
+/* Delete icon styling */
 .icon-trash {
   color: darkred;
   transition: ease 0.3s;
@@ -95,6 +108,7 @@
   color: rgb(231, 1, 1);
 }
 
+/* Card container for alignment */
 .cardContainer {
   display: flex;
   justify-content: center;
@@ -103,6 +117,7 @@
   overflow: hidden;
 }
 
+/* Card list styling for vertical scrolling */
 .cardList {
   display: flex;
   flex-direction: column;
@@ -114,6 +129,7 @@
   width: 100%;
 }
 
+/* Scrollbar styling */
 .cardList::-webkit-scrollbar {
   width: 8px;
 }
