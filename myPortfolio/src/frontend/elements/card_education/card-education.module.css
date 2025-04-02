@@ -1,3 +1,4 @@
+/* Main container for the education card */
 .education {
   background-image: url('../../../assets/images/Seneca-4.png');
   background-size: cover;
@@ -7,30 +8,33 @@
   padding: 1rem;
   border-radius: 0.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Duas colunas */
-  grid-template-rows: auto 1fr auto auto; /* Quatro linhas */
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-template-rows: auto 1fr auto auto; /* Four rows */
   gap: 1rem;
-  overflow: hidden; /* Garante que nenhum conteúdo ultrapasse os limites do card */
+  overflow: hidden; /* Ensures no content overflows the card */
 }
 
+/* Container for the card content */
 .container {
-  display: contents; /* Permite que os filhos do container sigam o grid do pai */
+  display: contents; /* Allows children to follow the parent's grid layout */
 }
 
+/* Title section styling */
 .title {
   background-color: rgba(0, 0, 0, 0.150);
-  grid-column: 1 / -1; /* Ocupa ambas as colunas */
-  grid-row: 1; /* Primeira linha */
+  grid-column: 1 / -1; /* Spans both columns */
+  grid-row: 1; /* First row */
   font-weight: 600;
   color: white;
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
+/* Text section styling */
 .text {
   background-color: rgba(0, 0, 0, 0.150);
-  grid-column: 1; /* Primeira coluna */
-  grid-row: 2; /* Segunda linha */
+  grid-column: 1; /* First column */
+  grid-row: 2; /* Second row */
   font-size: 1rem;
   font-weight: 600;
   color: white;
@@ -38,10 +42,11 @@
   border-radius: 0.5rem;
 }
 
+/* Skills section styling */
 .skills {
   background-color: rgba(0, 0, 0, 0.150);
-  grid-column: 2; /* Segunda coluna */
-  grid-row: 2; /* Segunda linha */
+  grid-column: 2; /* Second column */
+  grid-row: 2; /* Second row */
   font-size: 1rem;
   font-weight: 600;
   color: white;
@@ -49,11 +54,12 @@
   border-radius: 0.5rem;
 }
 
+/* Button styling for the link */
 .link {
-  grid-column: 1 / -1; /* Ocupa ambas as colunas */
-  grid-row: 4; /* Última linha */
-  justify-self: center; /* Centraliza horizontalmente */
-  align-self: center; /* Centraliza verticalmente */
+  grid-column: 1 / -1; /* Spans both columns */
+  grid-row: 4; /* Last row */
+  justify-self: center; /* Centers horizontally */
+  align-self: center; /* Centers vertically */
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #007bff;
@@ -64,41 +70,49 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  max-width: fit-content; /* Garante que o botão ocupe apenas o espaço necessário */
+  max-width: fit-content; /* Ensures the button only takes necessary space */
 }
 
+/* Hover effect for the link button */
 .link:hover {
   background-color: #0056b3;
 }
 
+/* Footer section styling */
 .footer {
-  grid-column: 1 / -1; /* Ocupa ambas as colunas */
-  grid-row: 4; /* Quarta linha */
+  grid-column: 1 / -1; /* Spans both columns */
+  grid-row: 4; /* Fourth row */
 }
 
+/* Actions container styling */
 .actions {
   display: flex;
   gap: 1rem;
 }
 
+/* Icon styling */
 .icon {
   cursor: pointer;
 }
 
+/* Pencil icon styling */
 .icon-pencil {
   color: darkblue;
   transition: ease 0.3s;
 }
 
+/* Hover effect for pencil icon */
 .icon-pencil:hover {
   color: rgb(4, 62, 255);
 }
 
+/* Trash icon styling */
 .icon-trash {
   color: darkred;
   transition: ease 0.3s;
 }
 
+/* Hover effect for trash icon */
 .icon-trash:hover {
   color: rgb(231, 1, 1);
 }
