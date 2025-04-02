@@ -24,9 +24,10 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
   return (
     <div className={styles.overlay}>
       <div className={styles.formContainer}>
+        {/* Title indicating whether the form is for editing or adding */}
         <h2>{editMode ? 'Edit Content' : 'Add New Content'}</h2>
         <form>
-          {/* Image URL input */}
+          {/* Input for the image URL */}
           <div className="form-group">
             <label>Image URL</label>
             <input
@@ -37,7 +38,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
-          {/* Title input */}
+          {/* Input for the title */}
           <div className="form-group">
             <label>Title</label>
             <input
@@ -48,7 +49,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
-          {/* Description input */}
+          {/* Textarea for the description */}
           <div className="form-group">
             <label>Description</label>
             <textarea
@@ -58,7 +59,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
-          {/* Category input */}
+          {/* Input for the category */}
           <div className="form-group">
             <label>Category</label>
             <input
@@ -69,7 +70,7 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
-          {/* Technologies input */}
+          {/* Input for technologies */}
           <div className="form-group">
             <label>Technologies</label>
             <div className={styles.technologyInputGroup}>
@@ -82,7 +83,8 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               <button 
                 type="button" 
                 className={styles.addButton} 
-                onClick={handleAddTechnology}>
+                onClick={handleAddTechnology}
+              >
                 <BsFileEarmarkPlusFill />
               </button>
             </div>
@@ -90,12 +92,18 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               {newCard.technologies.map((tech, index) => (
                 <div key={index} className={styles.technologyItem}>
                   {tech}
-                  <button type="button" className={styles.removeButton} onClick={() => handleRemoveTechnology(index)}>x</button>
+                  <button 
+                    type="button" 
+                    className={styles.removeButton} 
+                    onClick={() => handleRemoveTechnology(index)}
+                  >
+                    x
+                  </button>
                 </div>
               ))}
             </div>
           </div>
-          {/* GitHub URL input */}
+          {/* Input for GitHub URL */}
           <div className="form-group">
             <label>GitHub URL</label>
             <input
@@ -106,10 +114,22 @@ export function ProjectEditModal({ newCard, editMode, handleInputChange, handleS
               onChange={handleInputChange}
             />
           </div>
-          {/* Save and Cancel buttons */}
+          {/* Buttons for saving or canceling */}
           <div className={styles.buttonGroup}>
-            <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleSave}>Save</button>
-            <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleCancel}>Cancel</button>
+            <button 
+              type="button" 
+              className={`${styles.btn} ${styles['btn-primary']}`} 
+              onClick={handleSave}
+            >
+              Save
+            </button>
+            <button 
+              type="button" 
+              className={`${styles.btn} ${styles['btn-danger']}`} 
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>
