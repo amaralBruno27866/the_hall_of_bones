@@ -1,8 +1,10 @@
+/* Horizontal rule styling for spacing */
 .contactform hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
+/* Styling for the form image */
 .img {
   border-radius: 3rem;
 }

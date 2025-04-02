@@ -1,9 +1,11 @@
+/* Main container for the dashboard */
 .dashboard {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
+/* Header styling */
 .header {
   display: flex;
   justify-content: center;
@@ -19,6 +21,7 @@
   text-align: center;
 }
 
+/* Logout icon styling */
 .icon {
   position: absolute;
   right: 1rem;
@@ -27,14 +30,16 @@
 }
 
 .icon:hover {
-  color: #007bff; /* Cor azul padrão */
+  color: #007bff;
 }
 
+/* Container for sidebar and content */
 .container {
   display: flex;
   flex: 1;
 }
 
+/* Sidebar styling */
 .sidebar {
   background-color: #f8f9fa;
   width: 250px;
@@ -67,6 +72,7 @@
   color: #007bff;
 }
 
+/* Main content area styling */
 .content {
   flex: 1;
   padding: 1rem;

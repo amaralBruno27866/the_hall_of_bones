@@ -1,7 +1,9 @@
+/* Footer container styling */
 .footer {
   padding: 2rem;
 }
 
+/* Logo styling */
 .footer .column .logo {
   max-width: 100px;
   margin-bottom: 2rem;
@@ -10,11 +12,13 @@
   border-radius: 100%;
 }
 
+/* Paragraph styling */
 .footer .column p {
   color: #6c757d; /* Cor de texto alinhada com o Bootstrap */
   margin-bottom: 2rem;
 }
 
+/* Social media icons styling */
 .footer .column .socials {
   display: flex;
   align-items: center;
@@ -35,6 +39,7 @@
   border-color: #007bff; /* Cor de borda alinhada com o Bootstrap */
 }
 
+/* Section title styling */
 .footer .column h4 {
   color: #343a40; /* Cor de texto alinhada com o Bootstrap */
   margin-bottom: 2rem;
@@ -42,6 +47,7 @@
   font-weight: 500;
 }
 
+/* Links styling */
 .footer .column > a {
   display: block;
   color: #6c757d; /* Cor de texto alinhada com o Bootstrap */
@@ -53,6 +59,7 @@
   color: #007bff; /* Cor de texto alinhada com o Bootstrap */
 }
 
+/* Footer container max width */
 .container {
   max-width: 1200px;
   margin: auto;

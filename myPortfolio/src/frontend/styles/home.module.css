@@ -1,9 +1,11 @@
+/* Main container for the home section */
 .home {
   position: relative;
   padding-top: 2rem;
   overflow: hidden;
 }
 
+/* Background video styling */
 .video {
   position: absolute;
   top: 0;
@@ -16,6 +18,7 @@
   transform: scaleX(-1);
 }
 
+/* Content container styling */
 .content {
   padding-left: 2rem;
   padding-bottom: 2rem;
@@ -42,12 +45,14 @@
   -webkit-text-stroke: 1px var(--highlight-300);
 }
 
+/* Paragraph styling within content */
 .content p {
   margin-bottom: 2rem;
   color: var(--highlight-100);
   position: relative;
 }
 
+/* Image container styling */
 .image {
   position: relative;
   display: flex;

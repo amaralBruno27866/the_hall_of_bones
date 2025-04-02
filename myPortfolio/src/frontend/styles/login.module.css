@@ -1,3 +1,4 @@
+/* Main container for the login page */
 .loginPage {
   display: flex;
   justify-content: center;
@@ -6,6 +7,7 @@
   background-color: #1a1a2e; /* Azul escuro */
 }
 
+/* Login card styling */
 .loginCard {
   background-color: white;
   padding: 20px;
@@ -15,6 +17,7 @@
   max-width: 400px;
 }
 
+/* Logo styling */
 .logo {
   display: block;
   margin: 0 auto 20px;
@@ -22,10 +25,12 @@
   height: auto;
 }
 
+/* Header styling */
 .header {
   text-align: center;
 }
 
+/* Button group styling */
 .buttonGroup {
   display: flex;
   justify-content: space-between;
@@ -41,15 +46,18 @@
   margin-right: 0;
 }
 
+/* Forgot password link styling */
 .forgotPassword {
   margin-top: 1rem;
   text-align: center;
 }
 
+/* Password input wrapper styling */
 .passwordWrapper {
   position: relative;
 }
 
+/* Password toggle icon styling */
 .passwordToggle {
   position: absolute;
   top: 50%;

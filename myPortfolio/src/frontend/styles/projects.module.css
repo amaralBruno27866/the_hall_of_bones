@@ -1,8 +1,10 @@
-.projects hr{
+/* Horizontal rule styling for spacing */
+.projects hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
+/* Styling for the information section */
 .info {
   display: flex;
   justify-content: space-between; /* Distribui os elementos igualmente */
@@ -11,6 +13,7 @@
   width: 100%; /* Garante que ocupe a largura do slide */
 }
 
+/* Gradient overlay for carousel slides */
 .gradientOverlay {
   position: absolute;
   bottom: 0;
@@ -20,6 +23,7 @@
   background: linear-gradient(to top, black, transparent); /* Gradiente de branco para transparente */
 }
 
+/* Content container styling */
 .content {
   margin-bottom: 2rem;
 }
