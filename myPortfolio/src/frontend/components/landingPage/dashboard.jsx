@@ -65,6 +65,7 @@ export function Dashboard() {
     <div className={styles.dashboard}>
       <header className={styles.header}>
         <h1>My Dashboard</h1>
+        {/* Logout icon */}
         <BsDoorOpenFill
           size={20}
           className={styles.icon}
@@ -72,8 +73,10 @@ export function Dashboard() {
         />
       </header>
       <div className={styles.container}>
+        {/* Sidebar navigation */}
         <nav className={styles.sidebar}>
           <ul>
+            {/* Sidebar links */}
             <li>
               <a
                 href="#"
@@ -121,6 +124,7 @@ export function Dashboard() {
             </li>
           </ul>
         </nav>
+        {/* Main content area */}
         <main className={styles.content}>
           {renderContent()}
         </main>

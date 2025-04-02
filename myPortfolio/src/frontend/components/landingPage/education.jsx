@@ -14,13 +14,16 @@ export function Education() {
         <h1>Education</h1>
       </header>
       <div className={styles.content}>
+        {/* Bootstrap carousel to display education slides */}
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+          {/* Carousel indicators */}
           <div className="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div className="carousel-inner">
+            {/* Carousel items */}
             <div className="carousel-item active">
               <img src={image1} className="d-block w-100" alt="First slide" />
               <div className={styles.gradientOverlay}></div>
@@ -64,6 +67,7 @@ export function Education() {
               </div>
             </div>
           </div>
+          {/* Carousel navigation buttons */}
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Previous</span>

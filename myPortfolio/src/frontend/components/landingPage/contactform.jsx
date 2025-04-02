@@ -102,7 +102,9 @@ export function ContactForm() {
         <h1>Contact Me</h1>
       </header>
       <div className="row row-cols-1 row-cols-md-2 g-4">
+        {/* Form for user input */}
         <form onSubmit={handleSubmit}>
+          {/* Input fields for name */}
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
             <input
@@ -116,6 +118,7 @@ export function ContactForm() {
             />
             {errors.name && <div className="invalid-feedback">{errors.name}</div>}
           </div>
+          {/* Input fields for email */}
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email</label>
             <input
@@ -129,6 +132,7 @@ export function ContactForm() {
             />
             {errors.email && <div className="invalid-feedback">{errors.email}</div>}
           </div>
+          {/* Input fields for phone */}
           <div className="mb-3">
             <label htmlFor="phone" className="form-label">Phone</label>
             <input
@@ -142,6 +146,7 @@ export function ContactForm() {
             />
             {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
           </div>
+          {/* Input fields for subject */}
           <div className="mb-3">
             <label htmlFor="subject" className="form-label">Subject</label>
             <input
@@ -155,6 +160,7 @@ export function ContactForm() {
             />
             {errors.subject && <div className="invalid-feedback">{errors.subject}</div>}
           </div>
+          {/* Input fields for message */}
           <div className="mb-3">
             <label htmlFor="message" className="form-label">Message</label>
             <textarea
@@ -170,11 +176,14 @@ export function ContactForm() {
             {errors.message && <div className="invalid-feedback">{errors.message}</div>}
             <div className="form-text">Maximum 2000 characters</div>
           </div>
+          {/* Submit button */}
           <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
+          {/* Success message */}
           {submitSuccess && <div className="alert alert-success mt-3">Form submitted successfully!</div>}
         </form>
+        {/* Image displayed alongside the form */}
         <img src={form} alt="" className={styles.img} />
       </div>
       <hr />
