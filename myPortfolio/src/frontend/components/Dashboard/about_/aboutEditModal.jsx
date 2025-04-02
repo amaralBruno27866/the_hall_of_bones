@@ -5,9 +5,12 @@ import styles from '../../../styles/form.module.css';
 export function AboutEditModal({ newCard, editMode, handleInputChange, handleSave, handleCancel }) {
   return (
     <div className={styles.overlay}>
+      {/* Modal container */}
       <div className={styles.formContainer}>
+        {/* Title indicating whether the form is for editing or adding */}
         <h2>{editMode ? 'Edit Content' : 'Add New Content'}</h2>
         <form>
+          {/* Input for the image URL */}
           <div className="form-group">
             <label>Image URL</label>
             <input
@@ -18,6 +21,7 @@ export function AboutEditModal({ newCard, editMode, handleInputChange, handleSav
               onChange={handleInputChange}
             />
           </div>
+          {/* Input for the title */}
           <div className="form-group">
             <label>Title</label>
             <input
@@ -28,6 +32,7 @@ export function AboutEditModal({ newCard, editMode, handleInputChange, handleSav
               onChange={handleInputChange}
             />
           </div>
+          {/* Textarea for the paragraph */}
           <div className="form-group">
             <label>Paragraph</label>
             <textarea
@@ -37,9 +42,22 @@ export function AboutEditModal({ newCard, editMode, handleInputChange, handleSav
               onChange={handleInputChange}
             />
           </div>
+          {/* Buttons for saving or canceling the form */}
           <div className={styles.buttonGroup}>
-            <button type="button" className={`${styles.btn} ${styles['btn-primary']}`} onClick={handleSave}>Save</button>
-            <button type="button" className={`${styles.btn} ${styles['btn-danger']}`} onClick={handleCancel}>Cancel</button>
+            <button 
+              type="button" 
+              className={`${styles.btn} ${styles['btn-primary']}`} 
+              onClick={handleSave}
+            >
+              Save
+            </button>
+            <button 
+              type="button" 
+              className={`${styles.btn} ${styles['btn-danger']}`} 
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>

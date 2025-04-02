@@ -4,7 +4,7 @@ import { useAboutForm } from '../../../hooks/useAboutForm';
 import { CardAbout } from '../../../elements/card_about/card-about';
 import { AboutEditModal } from './aboutEditModal';
 import { AboutDeleteModal } from './aboutDeleteModal';
-import { BsArrowRepeat } from "react-icons/bs"; // Adicionando a importação do ícone
+import { BsArrowRepeat } from "react-icons/bs"; // Importing the refresh icon
 
 // AboutForm component to manage the About section
 export function AboutForm() {
