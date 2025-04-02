@@ -49,15 +49,17 @@ export function EducationForm() {
         <button onClick={() => setShowForm(true)}>Add a new content</button>
       </header>
       <div className={styles.cardContainer}>
-        {/* Map through the educationData array and render CardEducation components */}
-        {Array.isArray(educationData) && educationData.map((item) => (
-          <CardEducation
-            key={item._id}
-            educationData={item}
-            handleIconClick={handleIconClick}
-            activeIcon={activeIcon}
-          />
-        ))}
+        {/* Centralize cards and allow vertical scrolling */}
+        <div className={styles.cardList}>
+          {Array.isArray(educationData) && educationData.map((item) => (
+            <CardEducation
+              key={item._id}
+              educationData={item}
+              handleIconClick={handleIconClick}
+              activeIcon={activeIcon}
+            />
+          ))}
+        </div>
       </div>
       {/* Render the EducationEditModal if showForm is true */}
       {showForm && (
